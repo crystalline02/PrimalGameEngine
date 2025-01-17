@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PrimalEditor.Components
+{
+    [DataContract]
+    internal class Component: ViewModelBase
+    {
+        private string _name = "Default Component";
+        [DataMember]
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                if(value != _name)
+                {
+                    _name = value;
+                    OnPropertyChanged(nameof(Name));
+                }
+            }
+        }
+
+        [DataMember]
+        public GameEntity? Owner { get; private set; }
+
+        public Component(string name, GameEntity gameEntity)
+        {
+            _name = name;
+            Owner = gameEntity;
+        }
+    }
+}

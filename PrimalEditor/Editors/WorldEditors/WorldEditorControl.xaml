@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="PrimalEditor.Editors.WorldEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrimalEditor.Editors"
+             xmlns:util="clr-namespace:PrimalEditor.Utilities"
+             mc:Ignorable="d" Focusable="True"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <!--DataContext: Project-->
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding SaveProjectCommand}" CommandParameter="{Binding}" Key="S" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding UndoCommand}" Key="Z" Modifiers="Ctrl"/>
+        <KeyBinding Command="{Binding RedoCommand}" Key="Y" Modifiers="Ctrl"/>
+    </UserControl.InputBindings>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--在第0列创建一个Grid-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--在0列1行的上方创建一个GridSplitter-->
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
+            <!--在0列1行放置UndoRedoControl-->
+            <util:UndoRedoControl Grid.Row ="1" DataContext="{Binding UndoRedoManager}" Margin="0, 5, 0, 0"/>
+        </Grid>
+        <!--在第1列创建一个Grid-->
+        <Grid Grid.Column="1" Margin="5, 0, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--在1列1行的上方创建一个GridSplitter-->
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
+            <!--在1列0行放置ProjectLayoutControl-->
+            <local:ProjectLayoutControl Grid.Row="0" Margin="5, 0, 0, 0"/>
+            <!--在1列1行放置GameEntityControl-->
+            <local:GameEntityControl Grid.Row="1" Margin="5, 5, 0, 0"/>
+        </Grid>
+        <!--第1列的左边创建一个GridSpiltter-->
+        <GridSplitter Grid.Column= "1" Width="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns"/>
+    </Grid>
+</UserControl>
