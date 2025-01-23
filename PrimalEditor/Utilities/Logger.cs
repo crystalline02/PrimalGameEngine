@@ -49,14 +49,15 @@ namespace PrimalEditor.Utilities
                 }
             } 
         }
-        static private ObservableCollection<LoggerMessage> _messages;
-        static public ReadOnlyObservableCollection<LoggerMessage> Messages { get; }
-        static public CollectionViewSource MessageFiler { get; }
+        static private ObservableCollection<LoggerMessage> _messages = new ObservableCollection<LoggerMessage>();
+        static public ReadOnlyObservableCollection<LoggerMessage> Messages { get; } = new ReadOnlyObservableCollection<LoggerMessage>(_messages);
+        static public CollectionViewSource MessageFiler { get; } = new CollectionViewSource() { Source = Messages };
 
-        public static async Task Log(LoggerMessage message)
+        public static async Task Log(string message, MessageType type = MessageType.Info,
+            [CallerFilePath] string file = " ", [CallerMemberName] string caller = "", [CallerLineNumber] int line = 0)
         {
             // BeginInvoke是一个异步函数，往主线程添加一个Action，这个action保证异步执行，也就是会在主线程空闲时执行
-            await Application.Current.Dispatcher.BeginInvoke(() => { _messages.Add(message); });
+            await Application.Current.Dispatcher.BeginInvoke(() => { _messages.Add(new LoggerMessage(message, type, file, caller, line)); });
         }
 
         public static async Task Clear()
@@ -67,13 +68,10 @@ namespace PrimalEditor.Utilities
 
         static Logger()
         {
-            Messages = new ReadOnlyObservableCollection<LoggerMessage>(_messages);
-            MessageFiler = new CollectionViewSource() { Source = Messages };
-
             MessageFiler.Filter += (s, e) =>
             {
-                MessageType currentType = (e.Item as LoggerMessage).Type;
-                e.Accepted = ((int)currentType & MessageMask) != 0;  // If there is any bit in currentType which equals to that of the MessageMask, its accepted.Otherwies filtered.
+                int currentType = (int)(e.Item as LoggerMessage).Type;
+                e.Accepted = (currentType & MessageMask) != 0;  // If there is any bit in currentType which equals to that of the MessageMask, its accepted.Otherwies filtered.
             };
 
         }

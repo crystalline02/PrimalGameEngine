@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PrimalEditor.Editors"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <!--DataContext: GameEntity-->
+    <!--DataContext: MSGameEntity-->
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <ScrollViewer.Style>
             <Style TargetType="{x:Type ScrollViewer}">
@@ -42,7 +42,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Name" Grid.Column="0" Margin="8, 3, 0, 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 
-                <TextBox Text="{Binding Name, Mode=OneWay}" Tag="{Binding RenameCommand}"  Grid.Column="1" Margin="8, 3, 0, 3"/>
+                <TextBox Text="{Binding Name, Mode=OneWay, UpdateSourceTrigger=Explicit}" Tag="{Binding RenameCommand}"  Grid.Column="1" Margin="8, 3, 0, 3"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="8, 3, 0, 3">
                     <TextBlock Text="IsEnabled" Margin="5, 3, 0, 3"/>
                     <CheckBox IsChecked="{Binding IsEnable, Mode=OneWay}" 

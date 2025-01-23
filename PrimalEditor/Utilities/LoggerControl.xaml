@@ -6,7 +6,60 @@
              xmlns:local="clr-namespace:PrimalEditor.Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <!--DataContext: Doesn't matter-->
+    <DockPanel>
+        <Border DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Clear" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnClearMessageButtonClicked"/>
+                <ToggleButton IsChecked="True" Content="Info" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnFilterLoggerMessageToggleButtonClicked" x:Name="FilterInfoBtn"/>
+                <ToggleButton IsChecked="True" Content="Warning" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnFilterLoggerMessageToggleButtonClicked" x:Name="FilterWarningBtn"/>
+                <ToggleButton IsChecked="True" Content="Error" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnFilterLoggerMessageToggleButtonClicked" x:Name="FilterErrorBtn"/>
+            </StackPanel>
+        </Border>
+        <ScrollViewer>
+            <!--注意这里ItemsSource的Binding要改为CollectionViewSource类型的对象，这样Filter才起作用-->
+            <ItemsControl ItemsSource="{Binding Source={x:Static local:Logger.MessageFiler}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!--DataContext: LoggerMessage-->
+                        <DockPanel ToolTip="{Binding MetaData}">
+                            <DockPanel.Style>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightGray"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DockPanel.Style>
+                            <TextBlock Text="{Binding Time, StringFormat=hh:mm:ss}">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Type}" Value="{x:Static local:MessageType.Info}">
+                                                <Setter Property="Foreground" Value="Black"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Type}" Value="{x:Static local:MessageType.Warning}">
+                                                <Setter Property="Foreground" Value="DarkOrange"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Type}" Value="{x:Static local:MessageType.Error}">
+                                                <Setter Property="Foreground" Value="Red"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
 </UserControl>

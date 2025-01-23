@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <!--DataContext: UndoRedo-->
-    <Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
         <StackPanel>
             <ItemsControl ItemsSource="{Binding UndoList}">
                 <!--DataContext: UndoRedoAction-->
@@ -26,5 +26,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
 </UserControl>

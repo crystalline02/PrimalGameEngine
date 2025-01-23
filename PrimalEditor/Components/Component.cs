@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PrimalEditor.Components
 {
     [DataContract]
-    internal class Component: ViewModelBase
+    internal abstract class Component: ViewModelBase
     {
         private string _name = "Default Component";
         [DataMember]
@@ -33,5 +33,12 @@ namespace PrimalEditor.Components
             _name = name;
             Owner = gameEntity;
         }
+    }
+
+    internal interface IMSComponent { }
+
+    internal abstract class MSComponent<T>: ViewModelBase, IMSComponent  where T : Component
+    {
+
     }
 }

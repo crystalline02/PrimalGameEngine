@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrimalEditor.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
@@ -74,7 +75,8 @@ namespace PrimalEditor.GameProject
             catch(Exception ex)
             {
                 Debug.Write(ex.Message);
-                // TO DO: Log error to primal interface
+                Logger.Log($"Failed to read recent projects in {_projectsDataPath}.Error Message:\n" + ex.Message, MessageType.Error);
+                throw;
             }
 
         }
@@ -90,13 +92,14 @@ namespace PrimalEditor.GameProject
             catch (Exception ex)
             {
                 Debug.Write(ex.Message);
-                // TO DO: Log error to primal interface
+                Logger.Log($"Failed to write recent projects in {_projectsDataPath}.Error Message:\n" + ex.Message, MessageType.Error);
+                throw;
             }
         }
 
         static public Project? Open(ProjectData projectData)
         {
-            // 首先要重新读一遍项目数据，虽然构造函数中读取了一次项目数据，但是，当我们在这个应用程序中再次打开一个项目时，项目数据可能发生改变了，因为其他PrimalEditor也写入了数据
+            // 首先要重新读一遍项目数据，虽然构造函数中读取了一次项目数据，但是，当我们在这个应用程序中再次打开一个项目时，项目数据可能发生改变了，因为其他PrimalEditor也可能写入了数据
             // 说白了就是，recentProjectsData.xml文件可能在启动程序后到用户打开一个项目这期间，发生了改变
             ReadRecentProjectsData();
             
@@ -135,7 +138,8 @@ namespace PrimalEditor.GameProject
             catch(Exception ex) 
             {
                 Debug.Write(ex.Message);
-                // TO DO: Log error to primal interface
+                Logger.Log($"Failed to read recent projects in {_projectsDataPath}.Error Message:\n" + ex.Message, MessageType.Error);
+                throw;
             }
         }
     }

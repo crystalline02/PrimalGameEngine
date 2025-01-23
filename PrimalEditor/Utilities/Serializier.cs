@@ -23,7 +23,8 @@ namespace PrimalEditor.Utilities
             catch(Exception ex) 
             {
                 Console.WriteLine(ex.Message);
-                // TO DO: Log message to primal interface
+                Logger.Log($"Failed to serialize {instance.GetType().ToString()} to {path}.Error Message:\n" + ex.Message, MessageType.Error);
+                throw;
             }
         }
 
@@ -39,8 +40,8 @@ namespace PrimalEditor.Utilities
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                // TO DO: Log message to primal interface
-                return default(T);
+                Logger.Log($"Failed to deserialize from {path}.Error Message:\n" + ex.Message, MessageType.Error);
+                throw;
             }
         }
     }

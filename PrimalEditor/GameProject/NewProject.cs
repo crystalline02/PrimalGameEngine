@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrimalEditor.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -190,8 +191,8 @@ namespace PrimalEditor.GameProject
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
-                // TO DO: Log error to primal interface
-                return string.Empty;
+                Logger.Log("Failed to create a new project.Error Message:\n" + e.Message, MessageType.Error);
+                throw;
             }
         }
 
@@ -223,10 +224,11 @@ namespace PrimalEditor.GameProject
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Debug.WriteLine(ex.Message);
-                // TO DO: Log message to primal interface
+                Debug.WriteLine(e.Message);
+                Logger.Log("Failed to read and init project templates.Error Message:\n" + e.Message, MessageType.Error);
+                throw;
             }
             ValidateProjectPath();
         }

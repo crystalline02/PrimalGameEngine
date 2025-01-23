@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrimalEditor.Editors;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -103,20 +104,16 @@ namespace PrimalEditor.Utilities
             _redoList.Clear();
         }
 
-        public void RegisterUndoListChangeEvent(NotifyCollectionChangedEventHandler e)
-        {
-            _undoList.CollectionChanged += e;
-        }
-
-        public void RegisterRedoListChangeEvent(NotifyCollectionChangedEventHandler e)
-        {
-            _redoList.CollectionChanged += e;
-        }
-
         public UndoRedo()
         {
             UndoList = new ReadOnlyObservableCollection<IUndoRedo>(_undoList);
             RedoList = new ReadOnlyObservableCollection<IUndoRedo>(_redoList);
+
+            _undoList.CollectionChanged += (s, e) =>
+            {
+                // 每当undoList有变化，重新聚焦WorldEditorControl
+                WorldEditorControl.Instance?.Focus();
+            };
         }
     }
 }

@@ -11,20 +11,27 @@ namespace PrimalEditor.Editors
     /// </summary>
     public partial class WorldEditorControl : UserControl
     {
+        public static WorldEditorControl? Instance;
+
         public WorldEditorControl()
         {
             InitializeComponent();
-            Loaded += OnWorldEditorInit;
+            Instance = this;
 
+            Loaded += OnWorldEditorInit;
         }
         
         private void OnWorldEditorInit(object sender, RoutedEventArgs e)
         {
             Loaded -= OnWorldEditorInit;
 
-            // Keep focus of WorldEditorControl
+            // Set focus of WorldEditorControl when init
             Focus();
-            Project.UndoRedoManager.RegisterUndoListChangeEvent((s, e) => Focus());
+            
+            //Project.UndoRedoManager.RegisterUndoListChangeEvent((s, e) =>
+            //    {
+            //        Focus();
+            //    });
             // ((INotifyCollectionChanged)Project.UndoRedoManager.UndoList).CollectionChanged += (s, e) => Focus();
         }
     }

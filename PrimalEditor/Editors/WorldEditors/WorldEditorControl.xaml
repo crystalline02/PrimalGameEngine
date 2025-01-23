@@ -28,7 +28,14 @@
             <!--在0列1行的上方创建一个GridSplitter-->
             <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
             <!--在0列1行放置UndoRedoControl-->
-            <util:UndoRedoControl Grid.Row ="1" DataContext="{Binding UndoRedoManager}" Margin="0, 5, 0, 0"/>
+            <TabControl Grid.Row ="1" Margin="0, 5, 0, 0">
+                <TabItem Header="History">
+                    <util:UndoRedoControl DataContext="{Binding UndoRedoManager}"/>
+                </TabItem>
+                <TabItem Header="Logger">
+                    <util:LoggerControl />
+                </TabItem>
+            </TabControl>
         </Grid>
         <!--在第1列创建一个Grid-->
         <Grid Grid.Column="1" Margin="5, 0, 0, 0">

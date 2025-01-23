@@ -77,7 +77,7 @@ namespace PrimalEditor.GameProject {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PrimalEditor;V1.0.0.0;component/gameproject/projectbrowserdlg.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PrimalEditor;component/gameproject/projectbrowserdlg.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\GameProject\ProjectBrowserDlg.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

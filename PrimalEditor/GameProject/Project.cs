@@ -44,12 +44,13 @@ namespace PrimalEditor.GameProject
 
         public void UnLoad()
         {
-
+            UndoRedoManager.Clear();
         }
 
         public static void Save(Project project)
         {
             Utilities.Serializier.ToFile(project, project.FilePath);
+            Logger.Log($"Successfully saved the project {project.Name}", MessageType.Info);
         }
 
         private void AddSceneInternal(string name = "New Scene")

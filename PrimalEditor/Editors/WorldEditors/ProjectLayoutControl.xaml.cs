@@ -27,14 +27,22 @@ namespace PrimalEditor.Editors
         private void OnGameEntitySelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox? entityListBox = (sender as ListBox);
-            List<GameEntity>? currentSelection = entityListBox?.SelectedItems?.Cast<GameEntity>().ToList();
-            GameEntity? firstSelect = currentSelection?.FirstOrDefault();
-            GameEntityControl.Instance.DataContext = firstSelect;
-            List<GameEntity>? prevSelection = (currentSelection?.
+            List<GameEntity>? currentSelections = entityListBox?.SelectedItems?.Cast<GameEntity>().ToList();
+            List<GameEntity>? prevSelection = (currentSelections?.
                 Except(e.AddedItems?.Cast<GameEntity>()).
                 Concat(e.RemovedItems?.Cast<GameEntity>()).ToList());
+
+            if(currentSelections != null && currentSelections.Count > 0)
+            {
+                MSGameEntity msGamEntity = new MSGameEntity(currentSelections);
+                GameEntityControl.Instance.DataContext = msGamEntity; 
+            }
+            else
+            {
+                GameEntityControl.Instance.DataContext = null;
+            }
             
-            GameEntityControl.Instance.DataContext = firstSelect;
+            // selection changed undo and redo
             Project.UndoRedoManager.Add(new UndoRedoAction(
                 () =>
                 {
@@ -44,7 +52,7 @@ namespace PrimalEditor.Editors
                 () =>
                 {
                     entityListBox?.UnselectAll();
-                    currentSelection?.ForEach(x => (entityListBox?.ItemContainerGenerator.ContainerFromItem(x) as ListBoxItem).IsSelected = true);
+                    currentSelections?.ForEach(x => (entityListBox?.ItemContainerGenerator.ContainerFromItem(x) as ListBoxItem).IsSelected = true);
                 },
                 "Game entities selection changed")
                 );

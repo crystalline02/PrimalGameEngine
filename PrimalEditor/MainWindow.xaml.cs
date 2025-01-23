@@ -1,4 +1,5 @@
 ﻿using PrimalEditor.GameProject;
+using PrimalEditor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,7 +50,7 @@ namespace PrimalEditor
             {
                 Project.Current?.UnLoad();  // (DataContext as Project)?.UnLoad(); is the same
                 DataContext = project;  // 这个DataContext会被所有嵌套在MainWindow的UserControl的DataContext所继承，这个机制很有价值
-                Debug.WriteLine($"Successfully open project {project.Name} in main window.");
+                Logger.Log($"Successfully opened project:{project.Name}", MessageType.Info);
             }
             else
             {
