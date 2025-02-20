@@ -38,10 +38,9 @@ namespace PrimalEditor.GameProject
             Loaded -= OnOpenButNoRecentProject;
             if(!OpenProject.Projects.Any())
             {
+                OnToggleButtonClicked(NewProjectButton, new RoutedEventArgs());
                 OpenProjectButton.IsChecked = false;
                 OpenProjectButton.IsEnabled = false;
-                OpenProjectButton.Visibility = Visibility.Hidden;
-                OnToggleButtonClicked(NewProjectButton, new RoutedEventArgs());
             }
         }
 

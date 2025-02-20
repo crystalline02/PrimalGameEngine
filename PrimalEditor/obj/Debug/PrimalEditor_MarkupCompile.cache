@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\
+D:\Projects\PrimalGameEngine\PrimalEditor\obj\Debug\
 PrimalEditor
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\App.xaml
+D:\Projects\PrimalGameEngine\PrimalEditor\App.xaml
 11-1440470469
 
 3215274406
-194178300874
+194-1587779337
 Dictionaries\ControlTemplates.xaml;Dictionaries\EditorColors.xaml;Editors\WorldEditors\GameEntityControl.xaml;Editors\WorldEditors\ProjectLayoutControl.xaml;Editors\WorldEditors\WorldEditorControl.xaml;GameProject\NewProjectControl.xaml;GameProject\OpenProjectControl.xaml;GameProject\ProjectBrowserDlg.xaml;MainWindow.xaml;Utilities\LoggerControl.xaml;Utilities\UndoRedoControl.xaml;
 
 False

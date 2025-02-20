@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\",
+  "WorkspaceRootPath": "D:\\Projects\\PrimalGameEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\primalgameengine\\primaleditor\\editors\\worldeditors\\gameentitycontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\editors\\worldeditors\\gameentitycontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|d:\\projects\\primalgameengine\\primaleditor\\gameproject\\projectbrowserdlg.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\gameproject\\projectbrowserdlg.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\primalgameengine\\primaleditor\\editors\\worldeditors\\worldeditorcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\editors\\worldeditors\\worldeditorcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|d:\\projects\\primalgameengine\\primaleditor\\gameproject\\projectbrowserdlg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\gameproject\\projectbrowserdlg.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\primalgameengine\\primaleditor\\dictionaries\\controltemplates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\dictionaries\\controltemplates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\primalgameengine\\primaleditor\\editors\\worldeditors\\projectlayoutcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|d:\\projects\\primalgameengine\\primaleditor\\editors\\worldeditors\\projectlayoutcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\editors\\worldeditors\\projectlayoutcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\primalgameengine\\primaleditor\\utilities\\controls\\vectorbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\utilities\\controls\\vectorbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|d:\\projects\\primalgameengine\\primaleditor\\editors\\worldeditors\\gameentitycontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\editors\\worldeditors\\gameentitycontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\primalgameengine\\primaleditor\\utilities\\controls\\scalerbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\utilities\\controls\\scalerbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|d:\\projects\\primalgameengine\\primaleditor\\dictionaries\\controltemplates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\dictionaries\\controltemplates.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|d:\\projects\\primalgameengine\\primaleditor\\common\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\common\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,72 +39,76 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GameEntityControl.xaml",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
-              "RelativeDocumentMoniker": "PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
-              "RelativeToolTip": "PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-19T14:20:46.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProjectLayoutControl.xaml",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
-              "RelativeDocumentMoniker": "PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
-              "RelativeToolTip": "PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-19T13:52:08.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "VectorBox.cs",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Utilities\\Controls\\VectorBox.cs",
-              "RelativeDocumentMoniker": "PrimalEditor\\Utilities\\Controls\\VectorBox.cs",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Utilities\\Controls\\VectorBox.cs",
-              "RelativeToolTip": "PrimalEditor\\Utilities\\Controls\\VectorBox.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAcwBUAAAAwAAAAAAAAAA==",
+              "Title": "ProjectBrowserDlg.xaml.cs",
+              "DocumentMoniker": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml.cs",
+              "RelativeDocumentMoniker": "PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml.cs",
+              "ToolTip": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml.cs",
+              "RelativeToolTip": "PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAowCoAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T13:39:23.727Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ScalerBox.cs",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Utilities\\Controls\\ScalerBox.cs",
-              "RelativeDocumentMoniker": "PrimalEditor\\Utilities\\Controls\\ScalerBox.cs",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Utilities\\Controls\\ScalerBox.cs",
-              "RelativeToolTip": "PrimalEditor\\Utilities\\Controls\\ScalerBox.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T13:35:47.926Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ControlTemplates.xaml",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
-              "RelativeDocumentMoniker": "PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
-              "RelativeToolTip": "PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-19T13:10:42.299Z",
+              "WhenOpened": "2025-02-20T14:43:41.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "WorldEditorControl.xaml",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\WorldEditorControl.xaml",
-              "RelativeDocumentMoniker": "PrimalEditor\\Editors\\WorldEditors\\WorldEditorControl.xaml",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\WorldEditorControl.xaml",
-              "RelativeToolTip": "PrimalEditor\\Editors\\WorldEditors\\WorldEditorControl.xaml",
+              "Title": "ProjectBrowserDlg.xaml",
+              "DocumentMoniker": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml",
+              "RelativeDocumentMoniker": "PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml",
+              "ToolTip": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml",
+              "RelativeToolTip": "PrimalEditor\\GameProject\\ProjectBrowserDlg.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-18T09:05:56.673Z"
+              "WhenOpened": "2025-02-20T14:43:31.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameEntityControl.xaml",
+              "DocumentMoniker": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
+              "RelativeDocumentMoniker": "PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
+              "ToolTip": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
+              "RelativeToolTip": "PrimalEditor\\Editors\\WorldEditors\\GameEntityControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-20T14:43:22.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ControlTemplates.xaml",
+              "DocumentMoniker": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
+              "RelativeDocumentMoniker": "PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
+              "ToolTip": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
+              "RelativeToolTip": "PrimalEditor\\Dictionaries\\ControlTemplates.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-20T14:42:10.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Common\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "PrimalEditor\\Common\\RelayCommand.cs",
+              "ToolTip": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Common\\RelayCommand.cs",
+              "RelativeToolTip": "PrimalEditor\\Common\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T14:40:17.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProjectLayoutControl.xaml",
+              "DocumentMoniker": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
+              "RelativeDocumentMoniker": "PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
+              "ToolTip": "D:\\Projects\\PrimalGameEngine\\PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
+              "RelativeToolTip": "PrimalEditor\\Editors\\WorldEditors\\ProjectLayoutControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-19T13:52:08.65Z",
+              "EditorCaption": ""
             }
           ]
         }
