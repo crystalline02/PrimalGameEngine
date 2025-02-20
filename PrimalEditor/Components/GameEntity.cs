@@ -8,8 +8,7 @@ using System.Windows.Input;
 using System.Collections.Generic;
 using System.Reflection;
 using System;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
+using PrimalEditor.DLLWrapper;
 
 namespace PrimalEditor.Components
 {
@@ -36,8 +35,49 @@ namespace PrimalEditor.Components
         private ObservableCollection<Component> _components = new ObservableCollection<Component>();
         public ReadOnlyObservableCollection<Component> Components { get; private set; }
 
+        public T? GetComponent<T>() where T: Component => _components.FirstOrDefault(x => x.GetType() == typeof(T)) as T;
+
         [DataMember]
         public Scene Owner { get; private set; }
+
+        private int _entityId = Id.INVALID_ID;  // Entity id represented in engine.
+        public int EntityId
+        {
+            get => _entityId;
+            set
+            {
+                if(value != _entityId)
+                {
+                    _entityId = value;
+                    OnPropertyChanged(nameof(EntityId));
+                }
+            }
+        }
+
+        private bool _isActive = false;
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                if (value != _isActive)
+                {
+                    _isActive = value;
+                    if (_isActive)
+                    {
+                        // Add a entity to engine
+                        EntityId = EngineAPI.CreateGameEntity(this);
+                    }
+                    else
+                    {
+                        // remove current entity from engine
+                        EngineAPI.RemoveGameEntity(this);
+                        EntityId = Id.INVALID_ID;
+                    }
+                    OnPropertyChanged(nameof(IsActive));
+                }
+            }
+        }
 
         private bool _isEnable;
         [DataMember]

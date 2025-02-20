@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PrimalEditor"
         xmlns:editors="clr-namespace:PrimalEditor.Editors"
         mc:Ignorable="d" WindowStartupLocation="Manual"
-        Title="{Binding Name}" Width="1280" Height="720" >
+        Title="Primal Editor" Width="1280" Height="720" 
+        Style="{StaticResource PrimalWindowStyle}">
     <!--DataContext: Project-->
     <Grid>
         <editors:WorldEditorControl/>

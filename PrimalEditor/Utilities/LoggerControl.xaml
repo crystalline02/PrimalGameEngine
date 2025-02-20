@@ -5,15 +5,72 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrimalEditor.Utilities"
              mc:Ignorable="d" 
+             Background="{StaticResource Editor.Window.GrayColorBrush3}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Editor.Button.NormalBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1.8"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <EventSetter Event="Click" Handler="OnFilterLoggerMessageToggleButtonClicked"/>
+            <Setter Property="Width" Value="45"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border CornerRadius="2" 
+                                x:Name="border" 
+                                Margin="1"
+                                Opacity="0.6"
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                SnapsToDevicePixels="true">
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Margin" TargetName="border" Value="0"/>
+                                <Setter Property="BorderThickness" TargetName="border" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Margin" TargetName="border" Value="0"/>
+                                <Setter Property="Opacity" TargetName="border" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <!--DataContext: Doesn't matter-->
     <DockPanel>
-        <Border DockPanel.Dock="Top">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <Border DockPanel.Dock="Top" 
+                Background="{StaticResource Editor.Window.GrayColorBrush4}">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="5"/>
+            </Border.Effect>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="1, 3">
                 <Button Content="Clear" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnClearMessageButtonClicked"/>
-                <ToggleButton IsChecked="True" Content="Info" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnFilterLoggerMessageToggleButtonClicked" x:Name="FilterInfoBtn"/>
-                <ToggleButton IsChecked="True" Content="Warning" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnFilterLoggerMessageToggleButtonClicked" x:Name="FilterWarningBtn"/>
-                <ToggleButton IsChecked="True" Content="Error" Margin="5, 0" Width="60" HorizontalAlignment="Center" Click="OnFilterLoggerMessageToggleButtonClicked" x:Name="FilterErrorBtn"/>
+                <ToggleButton IsChecked="True" 
+                              Margin="2, 0" 
+                              Background="{StaticResource Editor.GreenColorBrush}"
+                              HorizontalAlignment="Center" 
+                              x:Name="FilterInfoBtn"/>
+                <ToggleButton IsChecked="True" 
+                              Margin="2, 0" 
+                              Background="{StaticResource Editor.OrangeColorBrush}"
+                              HorizontalAlignment="Center"
+                              x:Name="FilterWarningBtn"/>
+                <ToggleButton IsChecked="True" 
+                              Margin="2, 0" 
+                              Background="{StaticResource Editor.RedColorBrush}"
+                              HorizontalAlignment="Center"
+                              x:Name="FilterErrorBtn"/>
             </StackPanel>
         </Border>
         <ScrollViewer>
@@ -33,29 +90,29 @@
                                     <Setter Property="Background" Value="Transparent"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="LightGray"/>
+                                            <Setter Property="Background" Value="{StaticResource Editor.BackgroundColorBrush}"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </DockPanel.Style>
                             <TextBlock Text="{Binding Time, StringFormat=hh:mm:ss}">
                                 <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PirmalTextBlockStyle}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Type}" Value="{x:Static local:MessageType.Info}">
-                                                <Setter Property="Foreground" Value="Black"/>
+                                                <Setter Property="Foreground" Value="{StaticResource Editor.GreenColorBrush}"/>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding Type}" Value="{x:Static local:MessageType.Warning}">
-                                                <Setter Property="Foreground" Value="DarkOrange"/>
+                                                <Setter Property="Foreground" Value="{StaticResource Editor.OrangeColorBrush}"/>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding Type}" Value="{x:Static local:MessageType.Error}">
-                                                <Setter Property="Foreground" Value="Red"/>
+                                                <Setter Property="Foreground" Value="{StaticResource Editor.RedColorBrush}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Style="{StaticResource PirmalTextBlockStyle}"/>
                         </DockPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

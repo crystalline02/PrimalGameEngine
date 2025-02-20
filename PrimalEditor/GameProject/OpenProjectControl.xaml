@@ -10,20 +10,42 @@
     <UserControl.DataContext>
         <local:OpenProject />
     </UserControl.DataContext>
-    <Grid>
-        <StackPanel Background="White">
+    <Border Background="{StaticResource Editor.Window.GrayColorBrush3}" Margin="30, 0, 30, 10">
+        <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
-                <ListBox Width="160" Height="320" ItemsSource="{Binding Projects}" x:Name="projectsDataListBox" SelectedIndex="0">
+                <ListBox Width="160" Height="320" 
+                         ItemsSource="{Binding Projects}" 
+                         x:Name="projectsDataListBox" 
+                         SelectedIndex="0">
                     <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
+                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource ProjectBrowserDlg.ListBoxItem.Style}">
                             <EventSetter Event="MouseDoubleClick" Handler="OnProjectInListBoxDoubleClicked"/>
                         </Style>
                     </ListBox.ItemContainerStyle>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding Icon}" Width="30" Height="30"  Margin="0, 0, 5, 0"/>
-                                <TextBlock Text="{Binding ProjectName}"/>
+                            <!--DataContext: ProjectData-->
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Icon}" Width="30" Height="30"  Margin="0, 0, 5, 0"/>
+                                    <TextBlock Text="{Binding ProjectName}" 
+                                               FontFamily="Microsoft YaHei" 
+                                               FontSize="12"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Left"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding ProjectPath}" 
+                                           FontSize="9"  
+                                           TextWrapping="WrapWithOverflow"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource PirmalTextBlockStyle}"/>
+                                <TextBlock Text="{Binding LastOpenTime}"
+                                           FontSize="9"
+                                           TextWrapping="WrapWithOverflow"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Style="{StaticResource PirmalTextBlockStyle}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -39,5 +61,5 @@
                 <Button Content="Cancel" FontSize="17" Width="95" Height="30" Margin="150, 0, 0, 0" IsCancel="True"/>
             </StackPanel>
         </StackPanel>
-    </Grid>
+    </Border>
 </UserControl>

@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimalEditor", "PrimalEditor\PrimalEditor.csproj", "{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineTest", "EngineTest\EngineTest.vcxproj", "{D7AC5C70-249E-4732-97E9-B992DF6261D3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineDLL", "EngineDLL\EngineDLL.vcxproj", "{F31FBF7D-6B61-481A-A986-CD3A463922DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +25,14 @@ Global
 		{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}.Debug|x64.Build.0 = Debug|Any CPU
 		{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}.Release|x64.ActiveCfg = Release|Any CPU
 		{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}.Release|x64.Build.0 = Release|Any CPU
+		{D7AC5C70-249E-4732-97E9-B992DF6261D3}.Debug|x64.ActiveCfg = Debug|x64
+		{D7AC5C70-249E-4732-97E9-B992DF6261D3}.Debug|x64.Build.0 = Debug|x64
+		{D7AC5C70-249E-4732-97E9-B992DF6261D3}.Release|x64.ActiveCfg = Release|x64
+		{D7AC5C70-249E-4732-97E9-B992DF6261D3}.Release|x64.Build.0 = Release|x64
+		{F31FBF7D-6B61-481A-A986-CD3A463922DB}.Debug|x64.ActiveCfg = Debug|x64
+		{F31FBF7D-6B61-481A-A986-CD3A463922DB}.Debug|x64.Build.0 = Debug|x64
+		{F31FBF7D-6B61-481A-A986-CD3A463922DB}.Release|x64.ActiveCfg = Release|x64
+		{F31FBF7D-6B61-481A-A986-CD3A463922DB}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

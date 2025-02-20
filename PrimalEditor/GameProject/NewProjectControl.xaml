@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrimalEditor.GameProject"
              mc:Ignorable="d" Width="800" Height="460"
-             d:DataContext="{d:DesignInstance Type=local:NewProject, IsDesignTimeCreatable=True}"
              d:DesignHeight="460" d:DesignWidth="800">
     <!-- UserControl.DataContext作用于运行时，为NewProjectControl的DataContext设置一个NewProject实例
     而d:DataContext作用于设计时，在设计窗口就创建一个实例NewProject，属性值用的是默认值，主要用于直接数据的展示
@@ -18,15 +17,23 @@
         <local:NewProject />
     </UserControl.DataContext>
 
-    <Grid>
-        <StackPanel Background="White">
+    <Border Background="{StaticResource Editor.Window.GrayColorBrush3}" Margin="30, 0, 30, 10">
+        <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 20, 0, 0">
-                <ListBox Width="160" Height="260" ItemsSource="{Binding ProjectTemplates}" x:Name="templateListBox" SelectedIndex="0">
+                <ListBox Width="160" Height="260" 
+                         ItemsSource="{Binding ProjectTemplates}" 
+                         x:Name="templateListBox" 
+                         SelectedIndex="0"
+                         ItemContainerStyle="{StaticResource ProjectBrowserDlg.ListBoxItem.Style}">
                     <ListBox.ItemTemplate >
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding Icon}" Width="30" Height="30"  Margin="0, 0, 5, 0" />
-                                <TextBlock Text="{Binding ProjectType}"/>
+                                <TextBlock Text="{Binding ProjectType}" 
+                                           FontSize="12"
+                                           FontFamily="Microsoft YaHei"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -38,11 +45,11 @@
                 </Border>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 40, 0, 0" Height="24">
-                <TextBlock Text="Name" Width="60" FontSize="17"/>
+                <TextBlock Text="Name" Width="60" FontSize="17" Style="{StaticResource PirmalTextBlockStyle}"/>
                 <TextBox Width="600" Margin="8, 0, 0, 0" Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}" FontSize="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0" Height="24">
-                <TextBlock Text="Path" Width="60" FontSize="17"/>
+                <TextBlock Text="Path" Width="60" FontSize="17" Style="{StaticResource PirmalTextBlockStyle}"/>
                 <TextBox Width="500" Margin="8, 0, 0, 0" Text="{Binding ProjectPath, UpdateSourceTrigger=PropertyChanged}" FontSize="16"/>
                 <Button Content="Browse" Width="90" FontSize="17" Margin="10, 0, 0, 0"/>
             </StackPanel>
@@ -52,5 +59,5 @@
             </StackPanel>
             <TextBlock Text="{Binding ErrorMsg}" Margin="0, 5, 0, 0" HorizontalAlignment="Center"/>
         </StackPanel>
-    </Grid>
+    </Border>
 </UserControl>

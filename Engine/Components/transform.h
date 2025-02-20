@@ -1,18 +1,20 @@
 #pragma once
 #include "ComponentsCommon.h"
 
+#include "../EngineAPI/GameEntity.h"
+#include "../EngineAPI/TransformComponent.h"
+
 
 namespace primal::transform
 {
-DEFINE_ID_TYPE(transform_id)
-
+	
 	struct init_info
 	{
-		f64 position[3];
-		f64 rotation[4];
-		f64 scale[3];
+		f32 position[3]{0., 0., 0.};
+		f32 rotation[4]{0., 0., 0., 1.};
+		f32 scale[3]{1., 1., 1.};
 	};
 
-	transform_id create_transform(init_info& info, game_entity::entity_id entity);
-	bool remove_transform(transform_id id);
+	component create_transform(const init_info& info, game_entity::entity entity);
+	bool remove_transform(component id);
 }

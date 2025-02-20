@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrimalEditor.Editors"
              xmlns:util="clr-namespace:PrimalEditor.Utilities"
+             xmlns:ctrls="clr-namespace:PrimalEditor.Utilities.Controls"
              mc:Ignorable="d" Focusable="True"
              d:DesignHeight="1080" d:DesignWidth="1920">
     <!--DataContext: Project-->
@@ -13,7 +14,7 @@
         <KeyBinding Command="{Binding UndoCommand}" Key="Z" Modifiers="Ctrl"/>
         <KeyBinding Command="{Binding RedoCommand}" Key="Y" Modifiers="Ctrl"/>
     </UserControl.InputBindings>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -26,7 +27,19 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <!--在0列1行的上方创建一个GridSplitter-->
-            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
+            <GridSplitter Grid.Row="1" 
+                          Height="5" 
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Top" 
+                          ResizeDirection="Rows"
+                          Background="Transparent"/>
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <ctrls:NumberBox Value="8" HorizontalAlignment="Center"/>
+                <ctrls:VectorBox Demension="Vector2" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                <ctrls:VectorBox Demension="Vector3" Orientation="Horizontal" HorizontalAlignment="Right"/>
+                <ctrls:VectorBox Demension="Vector4" Orientation="Vertical" HorizontalAlignment="Left"/>
+                <ctrls:ScalerBox Value="6.8" HorizontalAlignment="Left"/>
+            </StackPanel>
             <!--在0列1行放置UndoRedoControl-->
             <TabControl Grid.Row ="1" Margin="0, 5, 0, 0">
                 <TabItem Header="History">
@@ -42,15 +55,26 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <!--在1列1行的上方创建一个GridSplitter-->
-            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" ResizeDirection="Rows"/>
+            <GridSplitter Grid.Row="1" 
+                          Height="5" 
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Top" 
+                          ResizeDirection="Rows"
+                          Background="Transparent"/>
             <!--在1列0行放置ProjectLayoutControl-->
-            <local:ProjectLayoutControl Grid.Row="0" Margin="5, 0, 0, 0"/>
+            <local:ProjectLayoutControl Grid.Row="0" Margin="5,0,0,0"/>
             <!--在1列1行放置GameEntityControl-->
-            <local:GameEntityControl Grid.Row="1" Margin="5, 5, 0, 0"/>
+            <local:GameEntityControl Grid.Row="1" Margin="5, 5, 0, 0" Grid.RowSpan="2"/>
         </Grid>
         <!--第1列的左边创建一个GridSpiltter-->
-        <GridSplitter Grid.Column= "1" Width="5" HorizontalAlignment="Left" VerticalAlignment="Stretch" ResizeDirection="Columns"/>
+        <GridSplitter Grid.Column= "1" 
+                      Width="5" 
+                      HorizontalAlignment="Left" 
+                      VerticalAlignment="Stretch" 
+                      ResizeDirection="Columns"
+                      Background="Transparent"/>
     </Grid>
 </UserControl>

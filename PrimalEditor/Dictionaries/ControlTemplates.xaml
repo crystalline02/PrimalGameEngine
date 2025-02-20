@@ -1,12 +1,642 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:util="clr-namespace:PrimalEditor.Utilities"
+                    xmlns:control="clr-namespace:PrimalEditor.Utilities.Controls"
                     x:Class="PrimalEditor.Dictionaries.ControlTemplates">
-    <Style TargetType="{x:Type TextBox}" x:Key="TextBoxStyle">
-        
+
+    <!--键盘聚焦时的ControlTemplate-->
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="1" StrokeDashArray="1 2" Stroke="{StaticResource Editor.FontColorBrush}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
+
+    <Style x:Key="{x:Type ListBox}" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush4}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border Name="Bd"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="true"
+                            Padding="1">
+                        <ScrollViewer Padding="{TemplateBinding Padding}"
+                                      Focusable="false">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush2}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true" />
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="ProjectBrowserDlg.ListBoxItem.Style">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Padding" Value="4,1" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border x:Name="Bd" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            TextElement.Foreground="{TemplateBinding Foreground}"
+                            Padding="{TemplateBinding Padding}" 
+                            SnapsToDevicePixels="true">
+                        <ContentPresenter 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <!--被选中但键盘不聚焦-->
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelectionActive" Value="False" />
+                                <Condition Property="Selector.IsSelected" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush6}" />
+                            <Setter TargetName="Bd" Property="TextElement.FontWeight" Value="Bold" />
+                        </MultiTrigger>
+                        
+                        <MultiTrigger>
+                            <!--键盘聚焦且被选中-->
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelectionActive" Value="True" />
+                                <Condition Property="Selector.IsSelected" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.BackgroundColorBrush}" />
+                            <Setter TargetName="Bd" Property="TextElement.Foreground" Value="White" />
+                            <Setter TargetName="Bd" Property="TextElement.FontWeight" Value="Bold" />
+                        </MultiTrigger>
+                        
+                        <!--Disabled-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Bd" Property="TextElement.Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True" >
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.BackgroundColorBrush}" />
+                            <Setter TargetName="Bd" Property="TextElement.Foreground" Value="White" />
+                            <Setter TargetName="Bd" Property="TextElement.FontWeight" Value="Bold" />
+                            <Setter TargetName="Bd" Property="Opacity" Value="0.65" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <util:ButtonTag2ColorConverter x:Key="ButtonTag2ColorConverter"/>
+    
+    <Style TargetType="{x:Type Button}" x:Key="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource Editor.Button.NormalBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Editor.Button.NormalBorderBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
+        <Setter Property="BorderThickness" Value="0, 1, 0, 1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5, 1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+
+                    </ControlTemplate.Resources>
+
+                    <Border CornerRadius="3" x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        SnapsToDevicePixels="true">
+                        <ContentPresenter 
+                            x:Name="contentPresenter" 
+                            Focusable="False" 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            Margin="{TemplateBinding Padding}" 
+                            RecognizesAccessKey="True" 
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Editor.Button.HoverPressBorderBrush}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Editor.Button.HoverBackgroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Editor.Button.HoverPressBorderBrush}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Editor.Button.HoverBackgroundBrush}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Editor.Button.HoverPressBorderBrush}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Editor.Button.PressBackgroundBrush}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Editor.Button.DisabedBackgroundBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Editor.Button.DisabledBorderBrush}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="TextBoxStyle">
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
+        <Setter Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush6}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource Editor.Window.GrayColorBrush2}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Editor.Window.GrayColorBrush1}"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="RenameTextBoxStyle" BasedOn="{StaticResource TextBoxStyle}">
+        <EventSetter Event="KeyDown" Handler="OnRenameTextBoxKeyDown"/>
+        <EventSetter Event="LostFocus" Handler="OnRenameTextBoxLostFocus"/>
+    </Style>
+    
     <!--x:Key="{x:Type TextBox}"表示该样式是TextBox控件的默认样式-->
     <Style TargetType="{x:Type TextBox}" x:Key="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}" >
         <EventSetter Event="KeyDown" Handler="OnTextBoxKeyDown"/>
         <EventSetter Event="LostFocus" Handler="OnTextBoxLostFocus"/>
+    </Style>
+    
+    <Style TargetType="{x:Type TextBlock}" x:Key="PirmalTextBlockStyle">
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    
+    <Style x:Key="PrimalAreoButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <!--忘记给ControlTemplate写TargetType属性了-->
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ButtonBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          Focusable="False"
+                                          Margin="{TemplateBinding Padding}"
+                                          SnapsToDevicePixels="True"/>
+                    </Border>
+                    <!--注意触发器要写在ControlTemplate上而不是Border上，似乎Border并没有IsMouseOver属性-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!--注意Mode=TemplatedParent不能和AncestorType同时使用-->
+                            <Setter Property="Background" TargetName="ButtonBorder" Value="{Binding Path=Tag, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource ButtonTag2ColorConverter}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="PrimalWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property= "Background" Value="{StaticResource Editor.Window.GrayColorBrush1}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Editor.BackgroundColorBrush}"/>
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <!--
+                CornerRadius: 窗口拐角圆弧；
+                ResizeBorderThickness：窗口可以调整宽度长度的可以选择的区域大小；
+                GlassFrameThickness：窗口边框的厚度，0就什么边框也看不到了，标题栏的按钮和文本也看不到；
+                CaptionHeight：标题栏的高度，这里指的是可以点击拖动的区域;
+                NonClientFrameEdges：有哪些非客户区保留windows默认的非客户区绘制方式，其他区域由WindowChrome接管，none表示全部被WindowChrome接管,
+                如果你设定保留哪个边框，你会看到有一条默认的windows边框，而WindowChrome接管的就没有；
+                UseAeroCaptionButtons：是否启用默认标题栏按钮，最小化、放大缩小、关闭这三个；
+                -->
+                <WindowChrome CornerRadius="0.5"
+                              ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"
+                              GlassFrameThickness="0"
+                              CaptionHeight="30"
+                              NonClientFrameEdges="None"
+                              UseAeroCaptionButtons="False"/>
+            </Setter.Value>
+        </Setter>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}, Path=WindowState}" 
+                                                 Value="Maximized">
+                                        <Setter Property="BorderThickness" Value="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+
+                        <Grid>
+                            <!--窗口主要内容-->
+                            <AdornerDecorator>
+                                <ContentPresenter Margin="0, 32, 0, 0" />
+                            </AdornerDecorator>
+                            
+                            <!--标题栏-->
+                            <DockPanel VerticalAlignment="Top" LastChildFill="False">
+                                <DockPanel.Resources>
+                                    <Style TargetType="{x:Type Path}" x:Key="{x:Type Path}">
+                                        <Setter Property="Stroke" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}, Mode=FindAncestor}}"/>
+                                        <Setter Property="StrokeThickness" Value="1.5"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type Rectangle}" x:Key="{x:Type Rectangle}">
+                                        <Setter Property="Stroke" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}, Mode=FindAncestor}}"/>
+                                        <Setter Property="StrokeThickness" Value="1.5"/>
+                                    </Style>
+                                    
+                                    <Style TargetType="{x:Type Button}" x:Key="{x:Type Button}" BasedOn="{StaticResource PrimalAreoButtonStyle}">
+                                        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+                                        <Setter Property="Height" Value="32"/>
+                                        <Setter Property="Width" Value="45"/>
+                                        <Setter Property="DockPanel.Dock" Value="Right"/>
+                                    </Style>
+                                </DockPanel.Resources>
+                                
+                                <TextBlock Text="{TemplateBinding Title}" 
+                                           DockPanel.Dock="Left" 
+                                           FontWeight="Bold" 
+                                           VerticalAlignment="Center"
+                                           FontSize="15"
+                                           Foreground="{StaticResource Editor.FontColorBrush}"
+                                           Margin="17, 6"/>
+                                <Button Click="OnCloseWindowButtonClicked" Tag="Close">
+                                    <Button.Content>
+                                        <Path Data="M1,1 L12,12 M1,12 L12,1"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="OnChangeWindowStateButtonClicked">
+                                    <Button.Content>
+                                        <Rectangle Width="12" Height="10"/>
+                                    </Button.Content>
+                                </Button>
+                                <Button Click="OnChangeMinimizeWindowButtonClicked">
+                                    <Button.Content>
+                                        <Rectangle Width="10" Height="1"/>
+                                    </Button.Content>
+                                </Button>
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PrimalDialogStyle" TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush1}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Editor.BackgroundColorBrush}"/>
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <!--
+            CornerRadius: 窗口拐角圆弧；
+            ResizeBorderThickness：窗口可以调整宽度长度的可以选择的区域大小；
+            GlassFrameThickness：窗口边框的厚度，0就什么边框也看不到了，标题栏的按钮和文本也看不到；
+            CaptionHeight：标题栏的高度，这里指的是可以点击拖动的区域;
+            NonClientFrameEdges：有哪些非客户区保留windows默认的非客户区绘制方式，其他区域由WindowChrome接管，none表示全部被WindowChrome接管,
+            如果你设定保留哪个边框，你会看到有一条默认的windows边框，而WindowChrome接管的就没有；
+            UseAeroCaptionButtons：是否启用默认标题栏按钮，最小化、放大缩小、关闭这三个；
+            -->
+                <WindowChrome CornerRadius="0.5"
+                          ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"
+                          GlassFrameThickness="0"
+                          CaptionHeight="30"
+                          NonClientFrameEdges="None"
+                          UseAeroCaptionButtons="False"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}, Path=WindowState}" 
+                                             Value="Maximized">
+                                        <Setter Property="BorderThickness" Value="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+
+                        <Grid>
+                            <!--窗口主要内容-->
+                            <AdornerDecorator>
+                                <ContentPresenter Margin="0, 32, 0, 0" />
+                            </AdornerDecorator>
+
+                            <!--标题栏-->
+                            <DockPanel VerticalAlignment="Top" LastChildFill="False">
+                                <DockPanel.Resources>
+                                    <Style TargetType="{x:Type Path}" x:Key="{x:Type Path}">
+                                        <Setter Property="Stroke" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}, Mode=FindAncestor}}"/>
+                                        <Setter Property="StrokeThickness" Value="1.5"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type Rectangle}" x:Key="{x:Type Rectangle}">
+                                        <Setter Property="Stroke" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}, Mode=FindAncestor}}"/>
+                                        <Setter Property="StrokeThickness" Value="1.5"/>
+                                    </Style>
+
+                                    <Style TargetType="{x:Type Button}" x:Key="{x:Type Button}" BasedOn="{StaticResource PrimalAreoButtonStyle}">
+                                        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+                                        <Setter Property="Height" Value="31"/>
+                                        <Setter Property="Width" Value="45"/>
+                                        <Setter Property="DockPanel.Dock" Value="Right"/>
+                                    </Style>
+                                </DockPanel.Resources>
+
+                                <TextBlock Text="{TemplateBinding Title}" 
+                                           DockPanel.Dock="Left" 
+                                           FontWeight="Bold"
+                                           FontSize="15"
+                                           Foreground="{StaticResource Editor.FontColorBrush}"
+                                           VerticalAlignment="Center"
+                                           Margin="15, 6"/>
+                                <Button Click="OnCloseWindowButtonClicked" Tag="Close">
+                                    <Button.Content>
+                                        <Path Data="M1,1 L12,12 M1,12 L12,1"/>
+                                    </Button.Content>
+                                </Button>
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type control:NumberBox}" x:Key="{x:Type control:NumberBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type control:NumberBox}">
+                    <Grid MinWidth="58" MinHeight="22"
+                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                        <TextBlock Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   x:Name="NumberTextBlock">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PirmalTextBlockStyle}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Cursor" Value="SizeWE"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBox Style="{StaticResource RenameTextBoxStyle}" 
+                                 Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=Explicit}"
+                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                 TextAlignment="Center"
+                                 Foreground="{TemplateBinding Foreground}"
+                                 x:Name="NumberTextBox"
+                                 Visibility="Collapsed"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Visibility, ElementName=NumberTextBox}" Value="Collapsed">
+                            <Setter Property="Visibility" TargetName="NumberTextBlock" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Visibility, ElementName=NumberTextBox}" Value="Visible">
+                            <Setter Property="Visibility" TargetName="NumberTextBlock" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Value, RelativeSource={RelativeSource Mode=Self}}" Value="{x:Null}">
+                            <Setter Property="ToolTip" Value="Inconsitent values"/>
+                            <Setter Property="Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type control:VectorBox}" x:Key="{x:Type control:VectorBox}">
+        <Setter Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush3}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="{Binding Path=Background, RelativeSource={RelativeSource Mode=Self}}"/>
+        <Setter Property="Demension" Value="Vector3"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type control:VectorBox}">
+                    <ControlTemplate.Resources>
+                        <!--由于NumberBox是自定义的控件，注意我们要写based on-->
+                        <Style TargetType="{x:Type control:NumberBox}" BasedOn="{StaticResource {x:Type control:NumberBox}}">
+                            <Setter Property="Multiplier" Value="{Binding Path=Multiplier, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                            <Setter Property="ToolTipService.InitialShowDelay" Value="1500"/>
+                            <Setter Property="ToolTipService.BetweenShowDelay" Value="1000"/>
+                        </Style>
+                    </ControlTemplate.Resources>
+                    <Border CornerRadius="8" 
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}">
+                        <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="Col0" Width="auto"/>
+                                <ColumnDefinition x:Name="Col1" Width="auto"/>
+                                <ColumnDefinition x:Name="Col2" Width="auto"/>
+                                <ColumnDefinition x:Name="Col3" Width="0"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="Row0" Height="auto"/>
+                                <RowDefinition x:Name="Row1" Height="auto"/>
+                                <RowDefinition x:Name="Row2" Height="auto"/>
+                                <RowDefinition x:Name="Row3" Height="0"/>
+                            </Grid.RowDefinitions>
+                            <control:NumberBox Foreground="{StaticResource Editor.RedColorBrush}" x:Name="Xnb"  ToolTip="X value"
+                                               Value="{Binding Path=X, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <control:NumberBox Foreground="{StaticResource Editor.GreenColorBrush}" x:Name="Ynb" ToolTip="Y value"
+                                               Value="{Binding Path=Y, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <control:NumberBox Foreground="{StaticResource Editor.BlueColorBrush}" x:Name="Znb" ToolTip="Z value"
+                                               Value="{Binding Path=Z, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <control:NumberBox Foreground ="{StaticResource Editor.FontColorBrush}"  x:Name="Wnb" ToolTip="W value"
+                                               Value="{Binding Path=W, RelativeSource={RelativeSource Mode=TemplatedParent}}" Visibility="Collapsed"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter Property="Grid.Row" Value="0" TargetName="Xnb"/>
+                            <Setter Property="Grid.Column" Value="0" TargetName="Xnb"/>
+                            <Setter Property="Grid.Row" Value="1" TargetName="Ynb"/>
+                            <Setter Property="Grid.Column" Value="0" TargetName="Ynb"/>
+                            <Setter Property="Grid.Row" Value="2" TargetName="Znb"/>
+                            <Setter Property="Grid.Column" Value="0" TargetName="Znb"/>
+                            <Setter Property="Grid.Row" Value="3" TargetName="Wnb"/>
+                            <Setter Property="Grid.Column" Value="0" TargetName="Wnb"/>
+                        </Trigger>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter Property="Grid.Column" Value="0" TargetName="Xnb"/>
+                            <Setter Property="Grid.Row" Value="0" TargetName="Xnb"/>
+                            <Setter Property="Grid.Column" Value="1" TargetName="Ynb"/>
+                            <Setter Property="Grid.Row" Value="0" TargetName="Ynb"/>
+                            <Setter Property="Grid.Column" Value="2" TargetName="Znb"/>
+                            <Setter Property="Grid.Row" Value="0" TargetName="Znb"/>
+                            <Setter Property="Grid.Column" Value="3" TargetName="Wnb"/>
+                            <Setter Property="Grid.Row" Value="0" TargetName="Wnb"/>
+                        </Trigger>
+                        <Trigger Property="Demension" Value="Vector2">
+                            <Setter Property="Width" TargetName="Col2" Value="0"/>
+                            <Setter Property="Width" TargetName="Col3" Value="0"/>
+                            <Setter Property="Height" TargetName="Row2" Value="0"/>
+                            <Setter Property="Height" TargetName="Row3" Value="0"/>
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="Znb"/>
+                        </Trigger>
+                        <Trigger Property="Demension" Value="Vector4">
+                            <Setter Property="Visibility" Value="Visible" TargetName="Wnb"/>
+                            <Setter Property="Height" TargetName="Row3" Value="auto"/>
+                            <Setter Property="Width" TargetName="Col3" Value="auto"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource Editor.BackgroundColorBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type control:ScalerBox}" x:Key="{x:Type control:ScalerBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="ToolTip" Value="Scaler value"/>
+        <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
+        <Setter Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush3}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type control:ScalerBox}">
+                    <Border MinWidth="62" MinHeight="25" Background="{TemplateBinding Background}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding HorizontalAlignment}"
+                            CornerRadius="8">
+                        <Grid MinWidth="58" MinHeight="22">
+                            <TextBlock Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    x:Name="NumberTextBlock">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PirmalTextBlockStyle}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Cursor" Value="SizeWE"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBox Style="{StaticResource RenameTextBoxStyle}" 
+                                  TextAlignment="Center"
+                                  Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=TemplatedParent}, UpdateSourceTrigger=Explicit}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Foreground="{TemplateBinding Foreground}"
+                                  x:Name="NumberTextBox"
+                                  Visibility="Collapsed"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Visibility, ElementName=NumberTextBox}" Value="Collapsed">
+                            <Setter Property="Visibility" TargetName="NumberTextBlock" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Visibility, ElementName=NumberTextBox}" Value="Visible">
+                            <Setter Property="Visibility" TargetName="NumberTextBlock" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Value, RelativeSource={RelativeSource Mode=Self}}" Value="{x:Null}">
+                            <Setter Property="ToolTip" Value="Inconsitent values"/>
+                            <Setter Property="Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

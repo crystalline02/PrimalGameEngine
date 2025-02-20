@@ -1,3 +1,8 @@
+C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.exe
+C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.deps.json
+C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.runtimeconfig.json
+C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.dll
+C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.pdb
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\Dictionaries\ControlTemplates.baml
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\Dictionaries\ControlTemplates.g.cs
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\Editors\WorldEditors\GameEntityControl.g.cs
@@ -13,11 +18,6 @@ C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\App.g.
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor_MarkupCompile.cache
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor_MarkupCompile.lref
-C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.exe
-C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.deps.json
-C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.runtimeconfig.json
-C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.dll
-C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\PrimalEditor.pdb
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\App.baml
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\Editors\WorldEditors\GameEntityControl.baml
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\Editors\WorldEditors\ProjectLayoutControl.baml
@@ -39,3 +39,4 @@ C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\refint
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor.pdb
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor.genruntimeconfig.cache
 C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\ref\PrimalEditor.dll
+C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\obj\Debug\Dictionaries\EditorColors.baml

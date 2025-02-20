@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -22,6 +23,13 @@ namespace PrimalEditor.GameProject
         public ProjectBrowserDlg()
         {
             InitializeComponent();
+
+            Loaded += (s, e) =>
+            {
+                OpenProjectView.IsEnabled = true;
+                NewProjectView.IsEnabled = false;
+            };
+
             Loaded += OnOpenButNoRecentProject;
         }
 
@@ -30,33 +38,64 @@ namespace PrimalEditor.GameProject
             Loaded -= OnOpenButNoRecentProject;
             if(!OpenProject.Projects.Any())
             {
-                openProjectButton.IsChecked = false;
-                openProjectButton.IsEnabled = false;
-                openProjectButton.Visibility = Visibility.Hidden;
-
-                OnToggleButtonClicked(newProjectButton, new RoutedEventArgs());
+                OpenProjectButton.IsChecked = false;
+                OpenProjectButton.IsEnabled = false;
+                OpenProjectButton.Visibility = Visibility.Hidden;
+                OnToggleButtonClicked(NewProjectButton, new RoutedEventArgs());
             }
+        }
+
+        private CubicEase EaseFunction { get; set; } = new CubicEase() { EasingMode=EasingMode.EaseInOut };
+
+        private void AnimateOpenProject2CreateProject()
+        {
+            DoubleAnimation highlightAnimation = new DoubleAnimation(150, 420, new Duration(TimeSpan.FromSeconds(0.15f)));
+            highlightAnimation.EasingFunction = EaseFunction;
+            highlightAnimation.Completed += (s, e) =>
+            {
+                ThicknessAnimation viewAnimation = new ThicknessAnimation(new Thickness(0), new Thickness(-1600, 0, 0, 0), new Duration(TimeSpan.FromSeconds(0.15)));
+                viewAnimation.EasingFunction = EaseFunction;
+                browserPanel.BeginAnimation(MarginProperty, viewAnimation);
+            };
+            SpotLightRect.BeginAnimation(Canvas.LeftProperty, highlightAnimation);
+        }
+
+        private void AnimateCreateProject2OpenProject()
+        {
+            DoubleAnimation highlightAnimation = new DoubleAnimation(420, 150, new Duration(TimeSpan.FromSeconds(0.15f)));
+            highlightAnimation.EasingFunction = EaseFunction;
+            highlightAnimation.Completed += (s, e) =>
+            {
+                ThicknessAnimation viewAnimation = new ThicknessAnimation(new Thickness(-1600, 0, 0, 0), new Thickness(0), new Duration(TimeSpan.FromSeconds(0.15f)));
+                viewAnimation.EasingFunction = EaseFunction;
+                browserPanel.BeginAnimation(MarginProperty, viewAnimation);
+            };
+            SpotLightRect.BeginAnimation(Canvas.LeftProperty, highlightAnimation);
         }
 
         private void OnToggleButtonClicked(object sender, RoutedEventArgs e)
         {
-            if(sender == openProjectButton)
+            if(sender == OpenProjectButton)
             {
-                if(newProjectButton.IsChecked == true)
+                if(NewProjectButton.IsChecked == true)
                 {
-                    newProjectButton.IsChecked = false;
-                    browserPanel.Margin = new Thickness(0, 0, 0, 0);
+                    NewProjectButton.IsChecked = false;
+                    AnimateCreateProject2OpenProject();
+                    OpenProjectView.IsEnabled = true;
+                    NewProjectView.IsEnabled = false;
                 }
-                openProjectButton.IsChecked = true;
+                OpenProjectButton.IsChecked = true;
             }
-            else  // sender == newProjectButton
+            else  // sender == NewProjectButton
             {
-                if (openProjectButton.IsChecked == true)
+                if (OpenProjectButton.IsChecked == true)
                 {
-                    openProjectButton.IsChecked = false;
-                    browserPanel.Margin = new Thickness(-800, 0, 0, 0);
+                    OpenProjectButton.IsChecked = false;
+                    AnimateOpenProject2CreateProject();
+                    OpenProjectView.IsEnabled = false;
+                    NewProjectView.IsEnabled = true;
                 }
-                newProjectButton.IsChecked = true;
+                NewProjectButton.IsChecked = true;
             }
         }
     }

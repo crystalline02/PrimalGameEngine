@@ -22,7 +22,6 @@ namespace PrimalEditor.GameProject
         public string? ProjectPath { get; set; }
         [DataMember]
         public DateTime? LastOpenTime { get; set; }
-
         public string FilePath => Path.Combine(ProjectPath ?? "", $"{ProjectName}{Project.Extention}");
         public byte[]? Icon { get; set; }
         public byte[]? ScreenShot { get; set; }

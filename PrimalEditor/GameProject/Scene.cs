@@ -3,7 +3,6 @@ using PrimalEditor.Utilities;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Runtime.Serialization;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace PrimalEditor.GameProject
@@ -57,14 +56,24 @@ namespace PrimalEditor.GameProject
         public ICommand AddEntityCommand { get; private set; }
         public ICommand RemoveEntityCommand { get; private set; }
 
-        private void AddEntityInternal(GameEntity entity)
+        private void AddEntityInternal(GameEntity entity, int index = -1)
         {
-            _gameEntities.Add(entity);
+            Debug.Assert(index >= -1);
+            if (index == -1)
+            {
+                _gameEntities.Add(entity);
+            }
+            else
+            {
+                _gameEntities.Insert(index, entity);
+            }
+            entity.IsActive = IsActive;
         }
 
         private void RemoveEntityInternal(GameEntity entity)
         {
             _gameEntities.Remove(entity);
+            entity.IsActive = false;
         }
 
         // 打开或者新建项目不走构造函数，走这个OnDeserialized
@@ -78,6 +87,12 @@ namespace PrimalEditor.GameProject
                 OnPropertyChanged(nameof(GameEntities));
             }
 
+            // For each game entities loaded from a project, create them inside the engine
+            foreach(GameEntity entity in _gameEntities)
+            {
+                entity.IsActive = true;
+            }
+
             AddEntityCommand = new RelayCommand<GameEntity>(
                 (x) =>
                 {
@@ -85,7 +100,7 @@ namespace PrimalEditor.GameProject
                     int entityIndex = _gameEntities.Count - 1;
                     UndoRedoAction action = new UndoRedoAction(
                         () => RemoveEntityInternal(x),
-                        () => _gameEntities.Insert(entityIndex, x),
+                        () => AddEntityInternal(x, entityIndex),
                         $"Add Entity({x.Name}) to Scene({Name})"
                         );
                     Project.UndoRedoManager.Add(action);
@@ -98,7 +113,7 @@ namespace PrimalEditor.GameProject
                     int entityIndex = _gameEntities.IndexOf(x);
                     RemoveEntityInternal(x);
                     UndoRedoAction action = new UndoRedoAction(
-                        () => _gameEntities.Insert(entityIndex, x),
+                        () => AddEntityInternal(x, entityIndex),
                         () => RemoveEntityInternal(x),
                         $"Remove Entity({x.Name}) form Scene({Name}) "
                         );
