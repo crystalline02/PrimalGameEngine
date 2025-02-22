@@ -97,7 +97,7 @@
                             </DockPanel.Style>
                             <TextBlock Text="{Binding Time, StringFormat=hh:mm:ss}">
                                 <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PirmalTextBlockStyle}">
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PrimalTextBlockStyle}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Type}" Value="{x:Static local:MessageType.Info}">
                                                 <Setter Property="Foreground" Value="{StaticResource Editor.GreenColorBrush}"/>
@@ -112,7 +112,7 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Style="{StaticResource PirmalTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Style="{StaticResource PrimalTextBlockStyle}"/>
                         </DockPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

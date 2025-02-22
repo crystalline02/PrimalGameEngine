@@ -50,7 +50,7 @@ namespace PrimalEditor.GameProject
         public static void Save(Project project)
         {
             Utilities.Serializier.ToFile(project, project.FilePath);
-            Logger.Log($"Successfully saved the project {project.Name}", MessageType.Info);
+            Logger.Log($"Successfully saved the project {project.Name} to {project.Path}", MessageType.Info);
         }
 
         private void AddSceneInternal(string name = "New Scene")

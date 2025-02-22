@@ -24,7 +24,7 @@
                     </ListBox.ItemContainerStyle>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <!--DataContext: ProjectData-->
+                            <!--DataType: ProjectData-->
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="{Binding Icon}" Width="30" Height="30"  Margin="0, 0, 5, 0"/>
@@ -39,13 +39,11 @@
                                            TextWrapping="WrapWithOverflow"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Left"
-                                           Style="{StaticResource PirmalTextBlockStyle}"/>
+                                           Style="{StaticResource PrimalTextBlockStyle}"/>
                                 <TextBlock Text="{Binding LastOpenTime}"
                                            FontSize="9"
                                            TextWrapping="WrapWithOverflow"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           Style="{StaticResource PirmalTextBlockStyle}"/>
+                                           Style="{StaticResource PrimalTextBlockStyle}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

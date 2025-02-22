@@ -5,12 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrimalEditor.Editors"
              xmlns:gp="clr-namespace:PrimalEditor.GameProject"
+             xmlns:cmp="clr-namespace:PrimalEditor.Components"
              mc:Ignorable="d" 
              Background="{StaticResource Editor.Window.GrayColorBrush3}"
              d:DesignHeight="450" d:DesignWidth="800">
     <!--重要信息！ProjectLayoutControl的DataContext继承自MainWindow的DataContext
     在本项目中，就是我们打开的一个Project-->
     <!--DataContext: Project-->
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type cmp:GameEntity}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}" 
+                           Style="{StaticResource PrimalTextBlockStyle}"
+                           IsEnabled="{Binding IsEnable}"/>
+                <Button Content="-"
+                        Command="{Binding DataContext.RemoveEntityCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"
+                        CommandParameter="{Binding}"
+                        Margin="5, 0, 0, 0"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
@@ -21,7 +35,6 @@
             <ItemsControl ItemsSource="{Binding Scenes}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <!-- DataContext: Scene-->
                         <StackPanel/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
@@ -35,7 +48,8 @@
                             <Expander.Header>
                                 <Grid>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Name}" Style="{StaticResource PirmalTextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Name}" Style="{StaticResource PrimalTextBlockStyle}" 
+                                                   IsEnabled="{Binding IsActive}"/>
                                         <Button Content="+"
                                                 Click="OnSceneAddEntityClicked"
                                                 IsEnabled="{Binding IsActive}"
@@ -53,24 +67,14 @@
                                          IsEnabled="{Binding IsActive}" 
                                          SelectionMode="Extended"
                                          x:Name="gameEntitesListBox"
+                                         ItemContainerStyle="{StaticResource ProjectBrowserDlg.ListBoxItem.Style}"
                                          SelectionChanged="OnGameEntitySelectionChanged">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel/>
                                         </ItemsPanelTemplate>
                                     </ListBox.ItemsPanel>
-                                    <ListBox.ItemTemplate>
-                                        <!--DataContext: GameEntity-->
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Name}"/>
-                                                <Button Content="-"
-                                                        Command="{Binding DataContext.RemoveEntityCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}}"
-                                                        CommandParameter="{Binding}"
-                                                        Margin="5, 0, 0, 0"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
+                                    <!--ItemControlTemplate has DataType: GameEntity-->
                                 </ListBox>
                             </Grid>
                         </Expander>

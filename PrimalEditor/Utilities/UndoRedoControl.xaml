@@ -14,7 +14,7 @@
                 <!--DataContext: UndoRedoAction-->
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" Style="{StaticResource PirmalTextBlockStyle}"/>
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource PrimalTextBlockStyle}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

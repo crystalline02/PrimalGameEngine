@@ -13,6 +13,8 @@
     <Color x:Key="Editor.GreenColor">#ff90ee90</Color>
     <Color x:Key="Editor.OrangeColor">#ffffd067</Color>
     <Color x:Key="Editor.BackgroundColor">#ff3c67b6</Color>
+    <Color x:Key="Editor.Tranparent.BackgroundColor">#703c67b6</Color>
+
 
     <SolidColorBrush x:Key="Editor.Window.GrayColorBrush1" Color="{StaticResource Editor.Window.GrayColor1}" />
     <SolidColorBrush x:Key="Editor.Window.GrayColorBrush2" Color="{StaticResource Editor.Window.GrayColor2}" />
@@ -27,6 +29,8 @@
     <SolidColorBrush x:Key="Editor.OrangeColorBrush" Color="{StaticResource Editor.OrangeColor}" />
     <SolidColorBrush x:Key="Editor.GreenColorBrush" Color="{StaticResource Editor.GreenColor}" />
     <SolidColorBrush x:Key="Editor.BackgroundColorBrush" Color="{StaticResource Editor.BackgroundColor}" />
+    <SolidColorBrush x:Key="Editor.Tranparent.BackgroundColorBrush" Color="{StaticResource Editor.Tranparent.BackgroundColor}"/>
+
 
     <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1" x:Key="Editor.Button.NormalBackgroundBrush">
         <LinearGradientBrush.GradientStops>

@@ -109,11 +109,12 @@ namespace PrimalEditor.Utilities
             UndoList = new ReadOnlyObservableCollection<IUndoRedo>(_undoList);
             RedoList = new ReadOnlyObservableCollection<IUndoRedo>(_redoList);
 
-            _undoList.CollectionChanged += (s, e) =>
-            {
-                // 每当undoList有变化，重新聚焦WorldEditorControl
-                WorldEditorControl.Instance?.Focus();
-            };
+            // 这样做会导致有的时候我们选中GameEntity，但是失焦了，这不好，我们先不这样做
+            //_undoList.CollectionChanged += (s, e) =>
+            //{
+            //    // 每当undoList有变化，重新聚焦WorldEditorControl
+            //    WorldEditorControl.Instance?.Focus();
+            //};
         }
     }
 }

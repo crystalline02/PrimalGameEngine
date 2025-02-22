@@ -54,6 +54,7 @@ namespace PrimalEditor.Components
             }
         }
 
+        // 用于添加和删除引擎中的GameEntity
         private bool _isActive = false;
         public bool IsActive
         {

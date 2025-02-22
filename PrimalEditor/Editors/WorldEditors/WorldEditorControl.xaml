@@ -38,6 +38,7 @@
                 <ctrls:VectorBox Demension="Vector2" Orientation="Horizontal" HorizontalAlignment="Center"/>
                 <ctrls:VectorBox Demension="Vector3" Orientation="Horizontal" HorizontalAlignment="Right"/>
                 <ctrls:VectorBox Demension="Vector4" Orientation="Vertical" HorizontalAlignment="Left"/>
+                <ctrls:VectorBox Demension="Vector4" Orientation="Vertical"/>
                 <ctrls:ScalerBox Value="6.8" HorizontalAlignment="Left"/>
             </StackPanel>
             <!--在0列1行放置UndoRedoControl-->

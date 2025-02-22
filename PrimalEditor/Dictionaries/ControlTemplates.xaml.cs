@@ -41,13 +41,13 @@ namespace PrimalEditor.Dictionaries
             if(e.Key == Key.Enter)
             {
                 RenameCommand.Execute(newName);  // 执行RenameCommand就相当于更新数据源了，be.UpdateSource();也就执行了
-                textBox?.MoveFocus(new TraversalRequest(FocusNavigationDirection.Last));
+                WorldEditorControl.Instance?.Focus();
                 e.Handled = true;  //  防止按下回车触发的OnKeyDown事件处理冒泡路由传播
             }
             else if(e.Key == Key.Escape)
             {
                 be.UpdateTarget();  //  源域更新目标域，退回当前输入
-                textBox?.MoveFocus(new TraversalRequest(FocusNavigationDirection.Last));
+                WorldEditorControl.Instance?.Focus();
                 e.Handled = true;  //  防止按下ESC触发的OnKeyDown事件处理冒泡路由传播
             }
         }
@@ -135,13 +135,13 @@ namespace PrimalEditor.Dictionaries
             if (e.Key == Key.Enter)
             {
                 RenameCommand.Execute(newName);  // 执行RenameCommand就相当于更新数据源了，be.UpdateSource();也就执行了
-                textBox?.MoveFocus(new TraversalRequest(FocusNavigationDirection.Last));
+                WorldEditorControl.Instance?.Focus();
                 e.Handled = true;  //  防止按下回车触发的OnKeyDown事件处理冒泡路由传播
             }
             else if (e.Key == Key.Escape)
             {
                 be.UpdateTarget();  //  源域更新目标域，退回当前输入
-                textBox?.MoveFocus(new TraversalRequest(FocusNavigationDirection.Last));
+                WorldEditorControl.Instance?.Focus();
                 e.Handled = true;  //  防止按下ESC触发的OnKeyDown事件处理冒泡路由传播
             }
         }

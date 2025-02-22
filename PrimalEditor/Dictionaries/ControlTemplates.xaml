@@ -22,7 +22,7 @@
         <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/> 
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -90,7 +90,6 @@
                                 <Condition Property="Selector.IsSelected" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush6}" />
-                            <Setter TargetName="Bd" Property="TextElement.FontWeight" Value="Bold" />
                         </MultiTrigger>
                         
                         <MultiTrigger>
@@ -101,26 +100,24 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.BackgroundColorBrush}" />
                             <Setter TargetName="Bd" Property="TextElement.Foreground" Value="White" />
-                            <Setter TargetName="Bd" Property="TextElement.FontWeight" Value="Bold" />
                         </MultiTrigger>
                         
                         <!--Disabled-->
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Bd" Property="TextElement.Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                            <Setter Property="Opacity" Value="0.6"/>
                         </Trigger>
-
+                        
+                        <!--鼠标停留-->
                         <Trigger Property="IsMouseOver" Value="True" >
-                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.BackgroundColorBrush}" />
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource Editor.Tranparent.BackgroundColorBrush}" />
                             <Setter TargetName="Bd" Property="TextElement.Foreground" Value="White" />
-                            <Setter TargetName="Bd" Property="TextElement.FontWeight" Value="Bold" />
-                            <Setter TargetName="Bd" Property="Opacity" Value="0.65" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
     
     <util:ButtonTag2ColorConverter x:Key="ButtonTag2ColorConverter"/>
     
@@ -189,6 +186,7 @@
         <Setter Property="BorderBrush" Value="{StaticResource Editor.Window.GrayColorBrush1}"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="{x:Type TextBox}" x:Key="RenameTextBoxStyle" BasedOn="{StaticResource TextBoxStyle}">
@@ -202,10 +200,15 @@
         <EventSetter Event="LostFocus" Handler="OnTextBoxLostFocus"/>
     </Style>
     
-    <Style TargetType="{x:Type TextBlock}" x:Key="PirmalTextBlockStyle">
+    <Style TargetType="{x:Type TextBlock}" x:Key="PrimalTextBlockStyle">
         <Setter Property="Foreground" Value="{StaticResource Editor.FontColorBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
     <Style x:Key="PrimalAreoButtonStyle" TargetType="{x:Type Button}">
@@ -444,7 +447,7 @@
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    x:Name="NumberTextBlock">
                             <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PirmalTextBlockStyle}">
+                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PrimalTextBlockStyle}">
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Cursor" Value="SizeWE"/>
@@ -507,18 +510,17 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}">
-                        <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="Col0" Width="auto"/>
-                                <ColumnDefinition x:Name="Col1" Width="auto"/>
-                                <ColumnDefinition x:Name="Col2" Width="auto"/>
+                                <ColumnDefinition x:Name="Col0" Width="*"/>
+                                <ColumnDefinition x:Name="Col1" Width="*"/>
+                                <ColumnDefinition x:Name="Col2" Width="*"/>
                                 <ColumnDefinition x:Name="Col3" Width="0"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition x:Name="Row0" Height="auto"/>
-                                <RowDefinition x:Name="Row1" Height="auto"/>
-                                <RowDefinition x:Name="Row2" Height="auto"/>
+                                <RowDefinition x:Name="Row0" Height="*"/>
+                                <RowDefinition x:Name="Row1" Height="*"/>
+                                <RowDefinition x:Name="Row2" Height="*"/>
                                 <RowDefinition x:Name="Row3" Height="0"/>
                             </Grid.RowDefinitions>
                             <control:NumberBox Foreground="{StaticResource Editor.RedColorBrush}" x:Name="Xnb"  ToolTip="X value"
@@ -565,8 +567,8 @@
                         </Trigger>
                         <Trigger Property="Demension" Value="Vector4">
                             <Setter Property="Visibility" Value="Visible" TargetName="Wnb"/>
-                            <Setter Property="Height" TargetName="Row3" Value="auto"/>
-                            <Setter Property="Width" TargetName="Col3" Value="auto"/>
+                            <Setter Property="Height" TargetName="Row3" Value="*"/>
+                            <Setter Property="Width" TargetName="Col3" Value="*"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="BorderBrush" Value="{StaticResource Editor.BackgroundColorBrush}"/>
@@ -582,6 +584,8 @@
 
     <Style TargetType="{x:Type control:ScalerBox}" x:Key="{x:Type control:ScalerBox}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{Binding Path=Background, RelativeSource={RelativeSource Mode=Self}}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="ToolTip" Value="Scaler value"/>
@@ -591,6 +595,8 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type control:ScalerBox}">
                     <Border MinWidth="62" MinHeight="25" Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                             VerticalAlignment="{TemplateBinding HorizontalAlignment}"
                             CornerRadius="8">
@@ -601,7 +607,7 @@
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                     x:Name="NumberTextBlock">
                                 <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PirmalTextBlockStyle}">
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource PrimalTextBlockStyle}">
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
                                                 <Setter Property="Cursor" Value="SizeWE"/>
@@ -623,6 +629,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource Editor.Disabled.FontColorBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource Editor.BackgroundColorBrush}"/>
                         </Trigger>
                         <DataTrigger Binding="{Binding Visibility, ElementName=NumberTextBox}" Value="Collapsed">
                             <Setter Property="Visibility" TargetName="NumberTextBlock" Value="Visible"/>

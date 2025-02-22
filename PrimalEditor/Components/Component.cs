@@ -37,8 +37,13 @@ namespace PrimalEditor.Components
 
     internal interface IMSComponent { }
 
+    // T denotes which type of component, eg, transform, script and so on
     internal abstract class MSComponent<T>: ViewModelBase, IMSComponent  where T : Component
     {
+        private List<Component> Components { get; set; }
+        public MSComponent(MSEntity msEntity)
+        {
 
+        }
     }
 }
