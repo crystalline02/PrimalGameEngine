@@ -1,5 +1,5 @@
 ﻿  main.cpp
 C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\EngineTest\TestEntityComponent.h(28,35): warning C4267: '=': conversion from 'size_t' to 'u32', possible loss of data
-  (compiling source file '../EngineTest/main.cpp')
+  (compiling source file 'main.cpp')
   
   EngineTest.vcxproj -> C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\x64\Debug\EngineTest.exe
