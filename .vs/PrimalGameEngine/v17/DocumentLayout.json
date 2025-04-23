@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\",
+  "WorkspaceRootPath": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Common\\Id.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Common\\Id.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Common\\Id.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Components\\Script.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Components\\Script.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Components\\Script.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\primalgameengine\\primaleditor\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|c:\\users\\zhenkou\\onedrive\\project\\crystalline02\\primalgameengine\\primaleditor\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Components\\ComponentsCommon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Components\\ComponentsCommon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DCC1EAE6-F484-463D-93B1-271E3C73AF6F}|Engine\\Engine.vcxproj|solutionrelative:Engine\\Components\\ComponentsCommon.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -32,11 +32,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Id.h",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Common\\Id.h",
+              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Common\\Id.h",
               "RelativeDocumentMoniker": "Engine\\Common\\Id.h",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Common\\Id.h",
+              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Common\\Id.h",
               "RelativeToolTip": "Engine\\Common\\Id.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwgAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAgwCMAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-23T04:43:54.192Z",
               "EditorCaption": ""
@@ -45,35 +45,33 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Script.cpp",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Components\\Script.cpp",
+              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Components\\Script.cpp",
               "RelativeDocumentMoniker": "Engine\\Components\\Script.cpp",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Components\\Script.cpp",
+              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Components\\Script.cpp",
               "RelativeToolTip": "Engine\\Components\\Script.cpp",
               "ViewState": "AgIAAAwAAAAAAAAAAADwv2oAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-23T04:43:42.22Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T04:43:42.22Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\PrimalEditor\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "PrimalEditor\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\PrimalEditor\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\PrimalEditor\\MainWindow.xaml.cs",
               "RelativeToolTip": "PrimalEditor\\MainWindow.xaml.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAAACsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T01:58:28.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T01:58:28.948Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "ComponentsCommon.h",
-              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Components\\ComponentsCommon.h",
+              "DocumentMoniker": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Components\\ComponentsCommon.h",
               "RelativeDocumentMoniker": "Engine\\Components\\ComponentsCommon.h",
-              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\PrimalGameEngine\\Engine\\Components\\ComponentsCommon.h",
+              "ToolTip": "C:\\Users\\ZhenKou\\OneDrive\\project\\crystalline02\\PrimalGameEngine\\Engine\\Components\\ComponentsCommon.h",
               "RelativeToolTip": "Engine\\Components\\ComponentsCommon.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",

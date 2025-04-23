@@ -31,6 +31,9 @@ namespace primal::id
 
 	inline constexpr id_type index(id_type id)
 	{
+		// This is a comment
+		// This is a comment
+		// Hello world
 		assert(is_valid(id));
 		id_type index = id & detail::index_mask;
 		assert(index != detail::index_mask);
