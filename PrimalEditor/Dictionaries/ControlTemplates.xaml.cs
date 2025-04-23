@@ -122,14 +122,12 @@ namespace PrimalEditor.Dictionaries
             //  如果有Command，我们认为Binding mode应该是One way，我们只希望通过Command来更新数据源，并且是显示地按键或者失焦
             if (be?.ParentBinding.Mode != BindingMode.OneWay)
             {
-                Logger.Log($"{textBox}' has text binding and command, but is not set to OneWay binding mode,", MessageType.Warning);
-                return;
+                throw new System.Exception($"{textBox}' has text binding and command, but is not set to OneWay binding mode.");
             }
 
             if (be?.ParentBinding.UpdateSourceTrigger != UpdateSourceTrigger.Explicit)
             {
-                Logger.Log($"{textBox}' has text binding and command, but is not set to Explicit UpdateSourceTrigger,", MessageType.Warning);
-                return;
+                throw new System.Exception($"{textBox}' has text binding and command, but is not set to Explicit UpdateSourceTrigger ");
             }
 
             if (e.Key == Key.Enter)

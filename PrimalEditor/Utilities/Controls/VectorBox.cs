@@ -67,8 +67,10 @@ namespace PrimalEditor.Utilities.Controls
 
         private static readonly DependencyProperty XProperty = DependencyProperty.Register(nameof(X), 
             typeof(string), 
-            typeof(NumberBox),
-            new PropertyMetadata("0"));
+            typeof(VectorBox),
+            new FrameworkPropertyMetadata("0",
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, 
+                null));
 
         public string Y
         {
@@ -84,8 +86,10 @@ namespace PrimalEditor.Utilities.Controls
 
         private static readonly DependencyProperty YProperty = DependencyProperty.Register(nameof(Y),
             typeof(string),
-            typeof(NumberBox),
-            new PropertyMetadata("0"));
+            typeof(VectorBox),
+            new FrameworkPropertyMetadata("0",
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                null));
 
         public string Z
         {
@@ -101,8 +105,10 @@ namespace PrimalEditor.Utilities.Controls
 
         private static readonly DependencyProperty ZProperty = DependencyProperty.Register(nameof(Z),
             typeof(string),
-            typeof(NumberBox),
-            new PropertyMetadata("0"));
+            typeof(VectorBox),
+            new FrameworkPropertyMetadata("0", 
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, 
+                null));
 
         public string W
         {
@@ -118,10 +124,12 @@ namespace PrimalEditor.Utilities.Controls
 
         private static readonly DependencyProperty WProperty = DependencyProperty.Register(nameof(W),
             typeof(string),
-            typeof(NumberBox),
-            new PropertyMetadata("0"));
+            typeof(VectorBox),
+            new FrameworkPropertyMetadata("0", 
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, 
+                null));
 
-        public double Mutiplier
+        public double Multiplier
         {
             get
             {
@@ -133,9 +141,9 @@ namespace PrimalEditor.Utilities.Controls
             }
         }
 
-        private static readonly DependencyProperty MutiplierProperty = DependencyProperty.Register(nameof(Mutiplier),
+        private static readonly DependencyProperty MutiplierProperty = DependencyProperty.Register(nameof(Multiplier),
             typeof(double),
-            typeof(NumberBox),
+            typeof(VectorBox),
             new PropertyMetadata(1.0));
     }
 }

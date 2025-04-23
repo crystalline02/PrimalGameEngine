@@ -1,8 +1,7 @@
 # pragma once
-#include "CommonHeaders.h"
-#include "Id.h"
+#include "../Common/CommonHeaders.h"
 
-namespace primal::game_entity
+namespace primal::entity
 {
 	DEFINE_ID_TYPE(entity_id)
 }
@@ -10,6 +9,11 @@ namespace primal::game_entity
 namespace primal::transform
 {
 	DEFINE_ID_TYPE(transform_id)
+}
+
+namespace primal::script
+{
+	DEFINE_ID_TYPE(script_id)
 }
 
 #define FORWRAD_DECLARE(type, ns) \

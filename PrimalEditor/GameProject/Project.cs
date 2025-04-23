@@ -1,5 +1,7 @@
 ﻿using PrimalEditor.Utilities;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -18,9 +20,7 @@ namespace PrimalEditor.GameProject
         public string Name { get; private set; }  // 创建界面的项目名称
         [DataMember]
         public string Path { get; private set; }  // 创建界面的项目路径
-
         static public string Extention => ".primal";
-
         public string FilePath => System.IO.Path.GetFullPath(System.IO.Path.Combine($"{Path}", $"{Name}{Extention}"));  // 项目文件的完整路径
 
         [DataMember(Name = nameof(Scenes))]
@@ -29,7 +29,6 @@ namespace PrimalEditor.GameProject
         {
             get; private set;
         }
-
         public Scene? ActiveScene { get; set; }
 
         public static Project? Current => Application.Current?.MainWindow?.DataContext as Project;

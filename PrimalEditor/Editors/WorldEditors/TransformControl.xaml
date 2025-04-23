@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="PrimalEditor.Editors.TransformControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrimalEditor.Editors"
+             xmlns:comp ="clr-namespace:PrimalEditor.Components"
+             xmlns:ctrl="clr-namespace:PrimalEditor.Utilities.Controls"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type={x:Type comp:MSTransform}, IsDesignTimeCreatable=True}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--DataContext: MSTransform-->
+    <Grid>
+        <local:ComponentControl ComponentName="Transform" SetExpanded="{Binding IsExpanded}">
+            <Grid>
+                <!--三行两列-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                    Style="{StaticResource PrimalTextBlockStyle}" 
+                    Text="Position"/>
+                <TextBlock Grid.Row="1" Grid.Column="0"
+                    Style="{StaticResource PrimalTextBlockStyle}" 
+                    Text="Rotation"/>
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                    Style="{StaticResource PrimalTextBlockStyle}" 
+                    Text="Scale"/>
+
+                <ctrl:VectorBox Margin="3, 0" Demension="Vector3" Grid.Row="0" Grid.Column="1" X="{Binding PosX}" Y="{Binding PosY}" Z="{Binding PosZ}" 
+                                PreviewMouseDown="OnPositionVectorBoxMouseDown"
+                                PreviewMouseUp="OnPositionVectorBoxMouseUp"
+                                LostFocus="OnPositionVectorBoxLostFocus"/>
+                <ctrl:VectorBox Margin="3, 0" Demension="Vector3" Grid.Row="1" Grid.Column="1" X="{Binding RotationX}" Y="{Binding RotationY}" Z="{Binding RotationZ}"
+                                PreviewMouseDown="OnRotationVectorBoxMouseDown"
+                                PreviewMouseUp="OnRotationVectorBoxMouseUp"
+                                LostFocus="OnRotationVectorBoxLostFocus"/>
+                <ctrl:VectorBox Margin="3, 0" Demension="Vector3" Grid.Row="2" Grid.Column="1" X="{Binding ScaleX}" Y="{Binding ScaleY}" Z="{Binding ScaleZ}"
+                                PreviewMouseDown="OnScaleVectorBoxMouseDown"
+                                PreviewMouseUp="OnScaleVectorBoxMouseUp"
+                                LostFocus="OnScaleVectorBoxLostFocus"/>
+            </Grid>
+        </local:ComponentControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="PrimalEditor.Editors.ComponentControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrimalEditor.Editors"
+             x:Name="ComponentView"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Margin="3"
+            CornerRadius="4">
+        <Border.Style>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush2}"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource Editor.Window.GrayColorBrush4}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid>
+            <Expander IsExpanded="{Binding SetExpanded, ElementName=ComponentView, Mode=TwoWay}">
+                <Expander.Header>
+                    <!--不要漏了设置ElementName，直接用Binding是绑定DataContext的-->
+                    <TextBlock Text="{Binding ComponentName, ElementName=ComponentView}" Style="{StaticResource PrimalTextBlockStyle}"/>
+                </Expander.Header>
+                <ContentPresenter Content="{Binding ComponentContent, ElementName=ComponentView}"
+                                  Margin="2"/>
+            </Expander>
+        </Grid>
+    </Border>
+</UserControl>

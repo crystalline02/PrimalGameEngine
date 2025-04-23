@@ -40,9 +40,9 @@ private:
 		std::cout << "Entity has been added " << _added_entities << " times." << std::endl;
 		std::cout << "Entity has been removed " << _removed_entities << " times." << std::endl;
 		std::cout << "Entities count: " << _num_entities << std::endl;
-		std::cout << "Currnet max geneartion: " << (u32)game_entity::get_max_generation() << std::endl;
-		std::cout << "Currnet min geneartion: " << (u32)game_entity::get_min_generation() << std::endl;
-		std::cout << "Currnet average geneartion: " << (f64)game_entity::get_average_generation() << std::endl;
+		std::cout << "Currnet max geneartion: " << (u32)entity::get_max_generation() << std::endl;
+		std::cout << "Currnet min geneartion: " << (u32)entity::get_min_generation() << std::endl;
+		std::cout << "Currnet average geneartion: " << (f64)entity::get_average_generation() << std::endl;
 	}
 
 	inline void create_random()
@@ -52,10 +52,10 @@ private:
 			add_num = 1000;
 		for (u32 i = 0; i < add_num; ++i)
 		{
-			game_entity::entity_info entity_info;
+			entity::entity_info entity_info;
 			transform::init_info transfom_info;
 			entity_info.transform_info = &transfom_info;
-			game_entity::entity new_entity = game_entity::create_entity(entity_info);
+			entity::game_entity new_entity = entity::create(entity_info);
 			_entities.emplace_back(new_entity);
 			++_added_entities;
 		}
@@ -69,14 +69,14 @@ private:
 		for (u32 i = 0; i < remove_num; ++i)
 		{
 			u32 rm_index = rand() % _entities.size();
-			game_entity::entity entity_to_remove = _entities[rm_index];
-			game_entity::remove_entity(entity_to_remove);
+			entity::game_entity entity_to_remove = _entities[rm_index];
+			entity::remove(entity_to_remove);
 			_entities.erase(_entities.begin() + rm_index);
 			++_removed_entities;
 		}
 	}
 
-	util::vector<game_entity::entity> _entities;
+	util::vector<entity::game_entity> _entities;
 	u32 _num_entities = 0;
 	u32 _added_entities = 0;
 	u32 _removed_entities = 0;

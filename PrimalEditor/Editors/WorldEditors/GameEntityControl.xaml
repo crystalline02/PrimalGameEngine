@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrimalEditor.Editors"
+             xmlns:cmp="clr-namespace:PrimalEditor.Components"
              mc:Ignorable="d"
              Background="{StaticResource Editor.Window.GrayColorBrush3}"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -41,24 +42,28 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Name" Grid.Column="0" Margin="8, 3, 0, 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                
+                <TextBlock Text="Name" Grid.Column="0" Margin="8, 3, 0, 3" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource PrimalTextBlockStyle}"/>
                 <TextBox Text="{Binding Name, Mode=OneWay, UpdateSourceTrigger=Explicit}" Tag="{Binding RenameCommand}"  Grid.Column="1" Margin="8, 3, 0, 3"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="8, 3, 0, 3">
-                    <TextBlock Text="IsEnabled" Margin="5, 3, 0, 3"/>
+                    <TextBlock Text="IsEnabled" Margin="5, 3, 0, 3" Style="{StaticResource PrimalTextBlockStyle}"/>
                     <CheckBox IsChecked="{Binding IsEnable, Mode=OneWay}" 
                               Command="{Binding EnableCommand}" 
                               CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Mode=Self}}" 
                               Margin="3"/>
                 </StackPanel>
             </Grid>
-            <ItemsControl ItemsSource="{Binding IMSComponent}">
+            <ItemsControl ItemsSource="{Binding MSComponents}">
                 <!--DataContext: class Derived from MSComponent, for example, MSTransform-->
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type cmp:MSTransform}">
+                        <local:TransformControl/>
+                    </DataTemplate>
+                </ItemsControl.Resources>
             </ItemsControl>
         </StackPanel>
     </ScrollViewer>

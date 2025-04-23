@@ -12,6 +12,7 @@ namespace PrimalEditor.Utilities.Controls
 {
     [TemplatePart(Name = "NumberTextBlock", Type = typeof(TextBlock))]
     [TemplatePart(Name = "NumberTextBox", Type = typeof(TextBox))]
+
     internal class NumberBox: Control
     {
         public string Value
@@ -30,7 +31,9 @@ namespace PrimalEditor.Utilities.Controls
             nameof(Value),
             typeof(string),
             typeof(NumberBox),
-            new PropertyMetadata("0"));
+            new FrameworkPropertyMetadata("0", 
+                FrameworkPropertyMetadataOptions.BindsTwoWayByDefault | FrameworkPropertyMetadataOptions.Journal,
+                null));
 
         public double Multiplier
         {
@@ -71,6 +74,11 @@ namespace PrimalEditor.Utilities.Controls
             }
         }
 
+        private void OnChangeValuePropertyBtnClick(object sender, RoutedEventArgs e)
+        {
+            Value = "50.26";
+        }
+
         private bool _captured = false;
         private double _value;
         private double _mouseStartX = 0;
@@ -86,7 +94,7 @@ namespace PrimalEditor.Utilities.Controls
 
             if(!_valueChanged)
             {
-                NumberTextBox.Visibility = Visibility.Visible;
+                NumberTextBox!.Visibility = Visibility.Visible;
                 NumberTextBox.Focus();
                 NumberTextBox.SelectAll();
             }
@@ -164,7 +172,6 @@ namespace PrimalEditor.Utilities.Controls
 
             NumberTextBlock = GetTemplateChild("NumberTextBlock") as TextBlock;
             NumberTextBox = GetTemplateChild("NumberTextBox") as TextBox;
-
         }
 
 

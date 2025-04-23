@@ -53,14 +53,13 @@ namespace PrimalEditor.Utilities
         static public ReadOnlyObservableCollection<LoggerMessage> Messages { get; } = new ReadOnlyObservableCollection<LoggerMessage>(_messages);
         static public CollectionViewSource MessageFiler { get; } = new CollectionViewSource() { Source = Messages };
 
-        public static async Task Log(string message, MessageType type = MessageType.Info,
+        public static async void Log(string message, MessageType type = MessageType.Info,
             [CallerFilePath] string file = " ", [CallerMemberName] string caller = "", [CallerLineNumber] int line = 0)
         {
-            // BeginInvoke是一个异步函数，往主线程添加一个Action，这个action保证异步执行，也就是会在主线程空闲时执行
             await Application.Current.Dispatcher.BeginInvoke(() => { _messages.Add(new LoggerMessage(message, type, file, caller, line)); });
         }
 
-        public static async Task Clear()
+        public static async void Clear()
         {
             // BeginInvoke是一个异步函数，往主线程添加一个Action，这个action保证异步执行，也就是会在主线程空闲时执行
             await Application.Current.Dispatcher.BeginInvoke(() => { _messages.Clear(); });

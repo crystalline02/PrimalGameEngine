@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrimalEditor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+598b7779bcc1f616e3d07e041ad746e3e2fa1082")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be8da2c08c8de57ccc0583df054e062be4b89626")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrimalEditor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrimalEditor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

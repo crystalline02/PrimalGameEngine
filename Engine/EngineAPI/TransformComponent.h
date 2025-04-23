@@ -1,5 +1,5 @@
 #pragma once
-#include "CommonHeaders.h"
+#include "../Components/ComponentsCommon.h"
 #include "../Utilities/MathTypes.h"
 
 namespace primal::transform

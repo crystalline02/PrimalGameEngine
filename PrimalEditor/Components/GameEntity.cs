@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System;
 using PrimalEditor.DLLWrapper;
+using System.Numerics;
 
 namespace PrimalEditor.Components
 {
@@ -36,6 +37,8 @@ namespace PrimalEditor.Components
         public ReadOnlyObservableCollection<Component> Components { get; private set; }
 
         public T? GetComponent<T>() where T: Component => _components.FirstOrDefault(x => x.GetType() == typeof(T)) as T;
+        public Component? GetComponent(Type compType) => _components.FirstOrDefault(x => x.GetType() == compType);
+
 
         [DataMember]
         public Scene Owner { get; private set; }
@@ -72,6 +75,7 @@ namespace PrimalEditor.Components
                     else
                     {
                         // remove current entity from engine
+                        Debug.Assert(EntityId != Id.INVALID_ID);
                         EngineAPI.RemoveGameEntity(this);
                         EntityId = Id.INVALID_ID;
                     }
@@ -137,10 +141,10 @@ namespace PrimalEditor.Components
             }
         }
 
-        /*此处我们的容器需要存放MSComponent，但是它是一个模板类，需要显示指定模板类型T，但是列表中存放的MSComponent是具有不同模板类型的实例，
-         * 为此不得不通过使MSComponent继承自一个Interface来实现*/
-        private ObservableCollection<IMSComponent> _components = new ObservableCollection<IMSComponent>();
-        public ReadOnlyObservableCollection<IMSComponent> Components { get; private set; }
+        /*此处我们的容器需要存放MSComponent，但是它是一个模板类，需要显示指定模板类型T，因此列表中存放的MSComponent需要是具有不同模板类型的实例，
+         * 这在语法上是不允许的，为此不得不通过使MSComponent继承自一个Interface来实现*/
+        private ObservableCollection<IMSComponent> _msComponents = new ObservableCollection<IMSComponent>();
+        public ReadOnlyObservableCollection<IMSComponent> MSComponents { get; private set; }
 
         private bool? _isEnable;
         public bool? IsEnable
@@ -157,6 +161,16 @@ namespace PrimalEditor.Components
         }
 
         private List<GameEntity> SelectedEntities { get; set; }
+        public List<T> GetComponentList<T>() where T: Component
+        {
+            if (SelectedEntities != null)
+            {
+                List<T> compList = SelectedEntities.Select(entity => entity.GetComponent<T>()).ToList();
+                compList.RemoveAll(comp => comp == null);
+                return compList;
+            }
+            return new List<T>();
+        }
 
         public ICommand RenameCommand { get; set; }
         public ICommand EnableCommand { get; set; }
@@ -164,34 +178,102 @@ namespace PrimalEditor.Components
         // Enable or disable the update for all selected entities
         protected bool _enableUpdate = true;
 
-        protected object? GetMixedValue(string propertyName)
+        // 'propertyName' donotes the property of 'GameEntity'
+        static public object? GetMixedValue<T>(string propertyName, List<T> instances)
         {
-            PropertyInfo? firstInfo = SelectedEntities.FirstOrDefault()?.GetType().GetProperty(propertyName);
+            if(!instances.Any())
+                return null;
+            
+            // 第一个实例没有指定的属性名称，则对于的MixedValue就是null
+            PropertyInfo? firstInfo = instances.FirstOrDefault()?.GetType().GetProperty(propertyName);
+            if(firstInfo == null || !firstInfo.CanRead)
+                return null;
+            Type propertyType = firstInfo.PropertyType;
+            object firstValue = Convert.ChangeType(firstInfo.GetValue(instances.FirstOrDefault()), propertyType)!;
+
+            if (instances.Any(instance =>
+            {
+                PropertyInfo? info = instance?.GetType().GetProperty(propertyName);
+
+                // 某实例没有指定名称的属性
+                if(info == null || !info.CanRead)
+                    return true;
+
+                // 某实例有指定名称的属性但是值于第一个不匹配
+                if (propertyType == typeof(string))
+                {
+                    string firstValueStr = (string)firstValue;
+                    string value = (string)Convert.ChangeType(info.GetValue(instance), typeof(string))!;
+                    return value != firstValueStr;
+                }
+                else if (propertyType == typeof(bool))
+                {
+                    bool firstValueBool = (bool)firstValue;
+                    bool value = (bool)Convert.ChangeType(info.GetValue(instance), typeof(bool))!;
+                    return value != firstValueBool;
+                }
+                else if(propertyType == typeof(int))
+                {
+                    int firstValueInt = (int)firstValue;
+                    int value = (int)Convert.ChangeType(info.GetValue(instance), typeof(int))!;
+                    return value != firstValueInt;
+                }
+                else if (propertyType == typeof(float))
+                {
+                    float firstValueFloat = (float)firstValue;
+                    float value = (float)Convert.ChangeType(info.GetValue(instance), typeof(float))!;
+                    return !firstValueFloat.IsTheSame(value);
+                }
+                else if (propertyType == typeof(double))
+                {
+                    double firstValueDouble = (double)firstValue;
+                    double value = (double)Convert.ChangeType(info.GetValue(instance), typeof(double))!;
+                    return !firstValueDouble.IsTheSame(value);
+                }
+                else if (propertyType == typeof(Vector3))
+                {
+                    Vector3 firstValueVector = (Vector3)firstValue;
+                    Vector3 value = (Vector3)Convert.ChangeType(info.GetValue(instance), typeof(Vector3))!;
+                    return !firstValueVector.IsTheSame(value);
+                }
+                else
+                    return true;
+
+            }))
+                return null;
+
+            return firstValue;
+
+
+            /*PropertyInfo? firstInfo = elements.FirstOrDefault()?.GetType().GetProperty(propertyName);
             if (firstInfo != null && firstInfo.CanRead)
             {
                 Type propertyType = firstInfo.PropertyType;
-                var firstValue = Convert.ChangeType(firstInfo.GetValue(SelectedEntities.FirstOrDefault()), propertyType);
-                foreach (GameEntity entity in SelectedEntities.Skip(1))
-                {
-                    PropertyInfo? info = entity.GetType().GetProperty(propertyName);
-                    if (info != null && info.CanRead && firstValue != null)
+                var firstValue = Convert.ChangeType(firstInfo.GetValue(elements.FirstOrDefault()), propertyType);
+                If there is any entity whose corresbonding property is not the same as the first one.
+                if (elements.Any(entity =>
                     {
-                        var value = Convert.ChangeType(info.GetValue(entity), propertyType);
-                        if(!firstValue.Equals(value))
+                        PropertyInfo? info = entity?.GetType().GetProperty(propertyName);
+                        if (info != null && info.CanRead && firstValue != null)
                         {
-                            return null;
+                            var value = Convert.ChangeType(info.GetValue(entity), propertyType);
+                            if (!MathUtils.IsTheSame(firstValue, value))
+                                return false;
                         }
-                    }
+                        return false;
+                    }))
+                {
+                    return null;
                 }
                 return firstValue;
             }
-            return null;
+            return null;*/
         }
 
         protected virtual bool UpdateMSEntityProperty()
         {
-            Name = (string?)GetMixedValue(nameof(Name));
-            IsEnable = (bool?)GetMixedValue(nameof(IsEnable));
+            Name = (string?)GetMixedValue(nameof(GameEntity.Name), SelectedEntities);
+            IsEnable = (bool?)GetMixedValue(nameof(GameEntity.IsEnable), SelectedEntities);
             return true;
         }
 
@@ -203,31 +285,64 @@ namespace PrimalEditor.Components
             _enableUpdate = true;
         }
 
-        protected bool UpdateGameEntitiesProperty(string propertyName)
+        // propertyName denotes the property of 'MSGameEntity'
+        protected virtual bool UpdateGameEntitiesProperty(string propertyName)
         {
             if (!_enableUpdate)
                 return false;
             
             SelectedEntities.ForEach(entity =>
             {
-                PropertyInfo? gameEntityPropertyInfo = entity?.GetType().GetProperty(propertyName);  // 如果是GameEntity的子类的属性，也能获取到
-                PropertyInfo? msGameEntityPropertyInfo = this.GetType().GetProperty(propertyName);  // 如果是MSEntity的子类的属性，也应当能获取到
-                if (gameEntityPropertyInfo != null && msGameEntityPropertyInfo != null && 
-                    gameEntityPropertyInfo.CanWrite && msGameEntityPropertyInfo.CanRead)
+                switch(propertyName)
                 {
-                    gameEntityPropertyInfo.SetValue(entity, msGameEntityPropertyInfo.GetValue(this));
+                    case nameof(Name):
+                        if(Name != null)
+                            entity.Name = Name;
+                        return;
+                    case nameof(IsEnable):
+                        if(IsEnable != null)
+                            entity.IsEnable = (bool)IsEnable;
+                        return;
+                    default:
+                        return;
                 }
             });
             return true;
         }
 
+        private void MakeMSComponentsList()
+        {
+            _msComponents.Clear();
+            MSComponents = new ReadOnlyObservableCollection<IMSComponent>(_msComponents);
+
+            GameEntity? firstEntity = SelectedEntities.FirstOrDefault();
+            if(firstEntity != null)
+            {
+                // 'comp' could be 'Transform','Script','RigidBody'.......We need its ms variants like 'MSTransform', 'MScrpt', 'MSRigBody'.This falls into polomophic.
+                foreach (Component comp in firstEntity.Components)
+                {
+                    Type compType = comp.GetType();
+                    if (!SelectedEntities.Skip(1).Any(entity => entity.GetComponent(compType) == null))
+                    {
+                        _msComponents.Add(comp.GetMSComponentVariant(this));
+                    }
+                 }
+            }
+            
+        }
+
         public MSEntity(List<GameEntity> entities)
         {
             SelectedEntities = entities;
+            MakeMSComponentsList();
 
             RenameCommand = new RelayCommand<string>(
                 (newName) =>
                 {
+                    // Ban empty name game entity
+                    if(string.IsNullOrEmpty(newName))
+                        return;
+
                     List<(GameEntity, string)> entitiesOldname = SelectedEntities.Select((entity) => (entity, entity.Name)).ToList();
                     Name = newName;  // 更新属性并同步到所有选中的GameEntity
                     Project.UndoRedoManager.Add(
@@ -273,7 +388,7 @@ namespace PrimalEditor.Components
                     newEnable ? "Enable selected game entities" : "Disable selected game entities"));
                 });
 
-            // 注意是先属性被修改，然后再触发PropertyChanged事件
+            // 注意是先MSEntity的属性被修改，然后再触发PropertyChanged事件
             PropertyChanged += (s, e) =>
             {
                 UpdateGameEntitiesProperty(e.PropertyName);

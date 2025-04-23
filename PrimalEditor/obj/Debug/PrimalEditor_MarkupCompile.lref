@@ -1,13 +1,15 @@
 ﻿
-FD:\Projects\PrimalGameEngine\PrimalEditor\App.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\Dictionaries\ControlTemplates.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\GameEntityControl.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\ProjectLayoutControl.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\WorldEditorControl.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\GameProject\NewProjectControl.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\GameProject\OpenProjectControl.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\GameProject\ProjectBrowserDlg.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\MainWindow.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\Utilities\LoggerControl.xaml;;
-FD:\Projects\PrimalGameEngine\PrimalEditor\Utilities\UndoRedoControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\App.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Dictionaries\ControlTemplates.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\ComponentControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\GameEntityControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\ProjectLayoutControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\TransformControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Editors\WorldEditors\WorldEditorControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\GameProject\NewProjectControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\GameProject\OpenProjectControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\GameProject\ProjectBrowserDlg.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\MainWindow.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Utilities\LoggerControl.xaml;;
+FC:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\PrimalEditor\Utilities\UndoRedoControl.xaml;;
 

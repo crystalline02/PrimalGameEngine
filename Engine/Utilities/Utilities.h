@@ -84,4 +84,12 @@ namespace primal::util
 		// TO DO: Implement our own min_element function
 #endif
 	}
+
+	template<typename element>
+	typename vector<element>::iterator erase_unorder(vector<element>& vec, size_t index)
+	{
+		std::iter_swap(vec.begin() + index, vec.end() - 1);
+		vec.pop_back();
+		return vec.begin() + index;
+	}
 }

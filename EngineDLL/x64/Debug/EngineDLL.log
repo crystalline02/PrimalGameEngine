@@ -1,5 +1,5 @@
 ﻿  dllmain.cpp
   EngineAPI.cpp
   Generating Code...
-     Creating library D:\Projects\PrimalGameEngine\x64\Debug\EngineDLL.lib and object D:\Projects\PrimalGameEngine\x64\Debug\EngineDLL.exp
-  EngineDLL.vcxproj -> D:\Projects\PrimalGameEngine\x64\Debug\EngineDLL.dll
+     Creating library C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\EngineDLL.lib and object C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\EngineDLL.exp
+  EngineDLL.vcxproj -> C:\Users\ZhenKou\OneDrive\project\PrimalGameEngine\x64\Debug\EngineDLL.dll

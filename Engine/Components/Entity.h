@@ -1,16 +1,15 @@
 #pragma once
-#include "ComponentsCommon.h"
-
 #include "../EngineAPI/GameEntity.h"
 
+#include "Transform.h"
+#include "Script.h"
 
-FOWARD_DECLARE_INIT_INFO(transform)
-
-namespace primal::game_entity
+namespace primal::entity
 {
 	struct  entity_info
 	{
-		transform::init_info* transform_info = nullptr;  // Be careful of memeory allocation and deallocation!!!
+		transform::init_info* transform_info = nullptr;
+		script::init_info* script_info = nullptr;
 #pragma region  MemeoryArragement
 		//entity_info() = default;
 
@@ -71,9 +70,9 @@ namespace primal::game_entity
 #pragma endregion
 	};
 
-	entity create_entity(const entity_info& info);
-	bool remove_entity(entity e);
-	bool is_alive(entity e);
+	game_entity create(const entity_info& info);
+	bool remove(game_entity e);
+	bool is_alive(game_entity e);
 	id::generation_type get_max_generation();
 	id::generation_type get_min_generation();
 	f64 get_average_generation();;

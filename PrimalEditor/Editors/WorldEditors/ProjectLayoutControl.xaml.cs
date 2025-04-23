@@ -32,7 +32,7 @@ namespace PrimalEditor.Editors
                 Except(e.AddedItems?.Cast<GameEntity>()).
                 Concat(e.RemovedItems?.Cast<GameEntity>()).ToList());
 
-            if(currentSelections != null && currentSelections.Count > 0)
+            if(currentSelections != null && currentSelections.Any())
             {
                 MSGameEntity msGamEntity = new MSGameEntity(currentSelections);
                 GameEntityControl.Instance.DataContext = msGamEntity; 

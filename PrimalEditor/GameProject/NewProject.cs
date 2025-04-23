@@ -204,7 +204,6 @@ namespace PrimalEditor.GameProject
             try
             {
                 /*Read project templates and show them in the new project controler*/
-
                 string[] allTemplatesXML = Directory.GetFiles(_templatesPath, "template.xml", SearchOption.AllDirectories);
                 
                 Debug.Assert(allTemplatesXML.Any());

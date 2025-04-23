@@ -1,3 +1,4 @@
+#include "ComponentsCommon.h"
 #include "Transform.h"
 #include "../Utilities//Utilities.h"
 
@@ -10,28 +11,30 @@ namespace primal::transform
 		util::vector<math::v3> scales;  // Length in synchronized with 'transforms'
 	}
 
-	component create_transform(const init_info& info, game_entity::entity entity)
+	component create(const init_info& info, entity::game_entity e)
 	{
-		assert(entity.is_valid());
+		assert(e.is_valid());
+		// When creating a transform component.The entity is NOT alive because we judge if it is alive by the transform component.
+		assert(!e.is_alive());
 
-		game_entity::entity_id entity_index = entity.get_index();
-		if (entity_index >= positions.size())  // Creating a new entity
+		entity::entity_id new_entity_id = e.get_index();
+		if (new_entity_id >= positions.size())  // Creating a new entity.So add new position,rotation and scale
 		{
-			assert(positions.size() == entity_index);
+			assert(positions.size() == new_entity_id);
 			positions.emplace_back();
 			rotations.emplace_back();
 			scales.emplace_back();
 		}
 
-		positions[entity_index] = math::v3(info.position);
-		rotations[entity_index] = math::v4(info.rotation);
-		scales[entity_index] = math::v3(info.scale);
+		positions[new_entity_id] = math::v3(info.position);
+		rotations[new_entity_id] = math::v4(info.rotation);
+		scales[new_entity_id] = math::v3(info.scale);
 
-		// 对于组件的id，我们保证也有generation part，并且和entity一致
-		return component(transform_id(entity.get_id()));
+		// 对于实体的transform组件的id，我们保证也有generation part，并且和entity一致
+		return component(transform_id(e.get_id()));
 	}
 
-	bool remove_transform(component transform)
+	bool remove(component transform)
 	{
 		return transform.remove();
 	}
@@ -39,8 +42,7 @@ namespace primal::transform
 	bool component::remove()
 	{
 		assert(is_valid());
-		// Do nothing just like removing a entity
-		//_id = transform_id(id::invalid_id);  // For rotation, position and scale data, keep as it is.We just smash the index to the data;
+		_id = transform_id(id::invalid_id);  // For rotation, position and scale data, keep as it is.We just smash the index to the data;
 		return true;
 	}
 

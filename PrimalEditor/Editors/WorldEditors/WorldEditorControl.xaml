@@ -34,12 +34,12 @@
                           ResizeDirection="Rows"
                           Background="Transparent"/>
             <StackPanel Orientation="Vertical" Grid.Row="0">
-                <ctrls:NumberBox Value="8" HorizontalAlignment="Center"/>
-                <ctrls:VectorBox Demension="Vector2" Orientation="Horizontal" HorizontalAlignment="Center"/>
-                <ctrls:VectorBox Demension="Vector3" Orientation="Horizontal" HorizontalAlignment="Right"/>
-                <ctrls:VectorBox Demension="Vector4" Orientation="Vertical" HorizontalAlignment="Left"/>
-                <ctrls:VectorBox Demension="Vector4" Orientation="Vertical"/>
-                <ctrls:ScalerBox Value="6.8" HorizontalAlignment="Left"/>
+                <ctrls:NumberBox Value="17.5" HorizontalAlignment="Center"/>
+                <ctrls:VectorBox X="-0.12" Z="0.25"/>
+                <ctrls:VectorBox X="9.86" HorizontalAlignment="Right"/>
+                <ctrls:VectorBox Demension="Vector4" HorizontalAlignment="Center"/>
+                <ctrls:VectorBox Demension="Vector2" HorizontalAlignment="Center" Orientation="Vertical"/>
+                <ctrls:VectorBox HorizontalAlignment="Stretch" Orientation="Vertical"/>
             </StackPanel>
             <!--在0列1行放置UndoRedoControl-->
             <TabControl Grid.Row ="1" Margin="0, 5, 0, 0">

@@ -67,15 +67,15 @@ EDITOR_INTERFACE id::id_type CreateGameEntity(const game_entity_descriptor* desc
 {
 	assert(descriptor != nullptr);
 	transform::init_info transform_info = descriptor->transform.to_init_info();
-	game_entity::entity_info entiy_info
+	entity::entity_info entiy_info
 	{
 		&transform_info  // Very important:transform_info will be cleared after this function is called.Which makes entiy_info polluted.However, as entiy_info is not returned it doesnt matter.
 	};
-	return game_entity::create_entity(entiy_info).get_id();
+	return entity::create(entiy_info).get_id();
 }
 
-EDITOR_INTERFACE bool RemoveGameEntity(game_entity::entity_id id)
+EDITOR_INTERFACE bool RemoveGameEntity(entity::entity_id id)
 {
-	return game_entity::remove_entity(game_entity::entity(id));
+	return entity::remove(entity::game_entity(id));
 }
 
