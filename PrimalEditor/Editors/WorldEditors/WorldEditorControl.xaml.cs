@@ -34,5 +34,15 @@ namespace PrimalEditor.Editors
             //    });
             // ((INotifyCollectionChanged)Project.UndoRedoManager.UndoList).CollectionChanged += (s, e) => Focus();
         }
+
+        private void OnAddNewScript(object sender, RoutedEventArgs e)
+        {
+            Dialog.CreateScriptDialog dlg = new Dialog.CreateScriptDialog();
+            dlg.Owner = Application.Current.MainWindow;
+            if (dlg.ShowDialog() == true)
+            {
+                dlg.Close();
+            }
+        }
     }
 }

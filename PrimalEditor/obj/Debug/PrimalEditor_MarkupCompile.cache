@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\App.xaml
-131217829957
+15-1537598776
 
-34-506628304
-194178300874
-Dictionaries\ControlTemplates.xaml;Dictionaries\EditorColors.xaml;Editors\WorldEditors\ComponentControl.xaml;Editors\WorldEditors\GameEntityControl.xaml;Editors\WorldEditors\ProjectLayoutControl.xaml;Editors\WorldEditors\TransformControl.xaml;Editors\WorldEditors\WorldEditorControl.xaml;GameProject\NewProjectControl.xaml;GameProject\OpenProjectControl.xaml;GameProject\ProjectBrowserDlg.xaml;MainWindow.xaml;Utilities\LoggerControl.xaml;Utilities\UndoRedoControl.xaml;
+371456056204
+197-1508547794
+Dialog\AskPrimalPathDlg.xaml;Dialog\CreateScriptDialog.xaml;Dictionaries\ControlTemplates.xaml;Dictionaries\EditorColors.xaml;Editors\WorldEditors\ComponentControl.xaml;Editors\WorldEditors\GameEntityControl.xaml;Editors\WorldEditors\ProjectLayoutControl.xaml;Editors\WorldEditors\TransformControl.xaml;Editors\WorldEditors\WorldEditorControl.xaml;GameProject\NewProjectControl.xaml;GameProject\OpenProjectControl.xaml;GameProject\ProjectBrowserDlg.xaml;MainWindow.xaml;Utilities\LoggerControl.xaml;Utilities\UndoRedoControl.xaml;
 
 False
 

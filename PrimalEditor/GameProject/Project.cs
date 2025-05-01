@@ -1,4 +1,5 @@
-﻿using PrimalEditor.Utilities;
+﻿using PrimalEditor.GameDev;
+using PrimalEditor.Utilities;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -16,12 +17,17 @@ namespace PrimalEditor.GameProject
     {
         // 无set表示该属性只允许在构造函数中初始化一次
         // private set表示属性只能在类内部修改，不仅仅局限于构造函数
+
+        // Project name specified in CreateNewProject dialog
         [DataMember]
-        public string Name { get; private set; }  // 创建界面的项目名称
+        public string Name { get; private set; }  
+        // Path to the project folder, which is a directory path
         [DataMember]
-        public string Path { get; private set; }  // 创建界面的项目路径
+        public string Path { get; private set; }  
         static public string Extention => ".primal";
         public string FilePath => System.IO.Path.GetFullPath(System.IO.Path.Combine($"{Path}", $"{Name}{Extention}"));  // 项目文件的完整路径
+
+        public string SolutionPath => System.IO.Path.GetFullPath(System.IO.Path.Combine($"{Path}", $"{Name}.sln"));  // Solution文件的完整路径
 
         [DataMember(Name = nameof(Scenes))]
         private ObservableCollection<Scene> _scenes = new ObservableCollection<Scene>();
@@ -43,6 +49,7 @@ namespace PrimalEditor.GameProject
 
         public void UnLoad()
         {
+            VisualStudio.CloseVisualStudio();
             UndoRedoManager.Clear();
         }
 

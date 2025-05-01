@@ -34,7 +34,29 @@ namespace PrimalEditor
         {
             // Once events in 'Loaded' is called, unregister this function so that it won't be called next time initializing main window.
             Loaded -= OnMainWindowLoaded;
+            GetPrimalEnginePath();
             ShowProjectBrowserDlg();
+        }
+
+        private void GetPrimalEnginePath()
+        {
+            string? path = Environment.GetEnvironmentVariable("PRIMAl_ENGINE_PATH", EnvironmentVariableTarget.User);
+            if (path == null)
+            {
+                AskPrimalPathDlg dlg = new AskPrimalPathDlg();
+                dlg.Owner = this;
+                if (dlg.ShowDialog() == true)
+                {
+                    path = dlg.PrimalEnginePath;
+                    Environment.SetEnvironmentVariable("PRIMAL_ENGINE_PATH", path, EnvironmentVariableTarget.User);
+                }
+                else
+                {
+                    Application.Current.Shutdown();
+                }
+            }
+            else
+                _primalEnginePath = path;
         }
 
         private void OnMainWindowClosed(object? sender, EventArgs e)
@@ -57,5 +79,8 @@ namespace PrimalEditor
                 Application.Current.Shutdown();
             }
         }
+
+        private static string _primalEnginePath = string.Empty;
+        public static string PrimalEnginePath => _primalEnginePath;
     }
 }

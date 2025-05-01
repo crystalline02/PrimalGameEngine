@@ -24,13 +24,6 @@ namespace PrimalEditor.Utilities
         public LoggerControl()
         {
             InitializeComponent();
-
-            Loaded += (s, e) =>
-            {
-                Logger.Log("This is a Info message", MessageType.Info);
-                Logger.Log("This is a Warning message", MessageType.Warning);
-                Logger.Log("This is a Error message", MessageType.Error);
-            };
         }
 
         private void OnClearMessageButtonClicked(object sender, RoutedEventArgs e)

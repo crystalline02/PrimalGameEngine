@@ -130,7 +130,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment= "Left" x:Name="browserPanel">
             <StackPanel.Effect>
-                <DropShadowEffect ShadowDepth="3" BlurRadius="5" Opacity="0.7"/>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.7"/>
             </StackPanel.Effect>
             <local:OpenProjectControl x:Name="OpenProjectView"/>
             <local:NewProjectControl x:Name="NewProjectView" Margin="800, 0, 0, 0"/>

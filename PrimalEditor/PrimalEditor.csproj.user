@@ -7,6 +7,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Dialog\AskPrimalPathDlg.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\CreateScriptDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Editors\WorldEditors\ComponentControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

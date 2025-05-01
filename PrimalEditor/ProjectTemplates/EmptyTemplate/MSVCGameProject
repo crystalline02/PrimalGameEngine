@@ -19,10 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="character_script.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="character_script.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -97,6 +95,7 @@
       <ForcedIncludeFiles>GameEntity.h</ForcedIncludeFiles>
       <CallingConvention>FastCall</CallingConvention>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -115,6 +114,7 @@
       <ForcedIncludeFiles>GameEntity.h</ForcedIncludeFiles>
       <CallingConvention>FastCall</CallingConvention>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>WINDOWS</SubSystem>
@@ -135,6 +135,7 @@
       <AdditionalIncludeDirectories>$(PrimalIncludePath)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>GameEntity.h</ForcedIncludeFiles>
       <CallingConvention>FastCall</CallingConvention>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,6 +157,8 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>$(PrimalIncludePath)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>GameEntity.h</ForcedIncludeFiles>
+      <CallingConvention>FastCall</CallingConvention>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <SubSystem>WINDOWS</SubSystem>

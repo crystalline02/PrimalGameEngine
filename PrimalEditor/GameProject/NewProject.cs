@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Animation;
 
 namespace PrimalEditor.GameProject
 {
@@ -27,6 +28,8 @@ namespace PrimalEditor.GameProject
         public byte[]? Icon { get; set; }
         public byte[]? ScreenShot { get; set; }
         public string? ProjectFilePath { get; set; }
+        public string? MSVCSolutionFilePath { get; set; }
+        public string? MSVCvxprojFilePath { get; set; }
     }
 
     internal class NewProject: ViewModelBase
@@ -186,6 +189,9 @@ namespace PrimalEditor.GameProject
                     File.WriteAllText(Path.GetFullPath(Path.Combine(projectPath, $"{ProjectName}{Project.Extention}")), newProjectXML);
                 }
 
+                if (!CreateMSVCSolution(template, projectPath))
+                    throw new Exception("Failed to create MSVC solution files.");
+
                 return projectPath;
             }
             catch (Exception e)
@@ -194,6 +200,28 @@ namespace PrimalEditor.GameProject
                 Logger.Log("Failed to create a new project.Error Message:\n" + e.Message, MessageType.Error);
                 throw;
             }
+        }
+
+        bool CreateMSVCSolution(ProjectTemplate template, string path)
+        {
+            Debug.Assert(Directory.Exists(path));
+            Debug.Assert(path.IndexOfAny(Path.GetInvalidPathChars()) == -1);
+
+            if(template.MSVCSolutionFilePath == null || template.MSVCvxprojFilePath == null)
+                return false;
+
+            string _projectGUID = "{" + Guid.NewGuid().ToString("D").ToUpper() + "}";
+            string _projectName = ProjectName;
+            string _solutionGUID = "{" + Guid.NewGuid().ToString("D").ToUpper() + "}";
+            string _primalIncludePath = Path.GetFullPath(Path.Combine(MainWindow.PrimalEnginePath, @"Engine/EngineAPI"));
+            string _primalLinkPath = (Path.EndsInDirectorySeparator(MainWindow.PrimalEnginePath) ? MainWindow.PrimalEnginePath : MainWindow.PrimalEnginePath + Path.DirectorySeparatorChar) + 
+                @"$(Platform)" + Path.DirectorySeparatorChar + @"$(Configuration)" + Path.DirectorySeparatorChar;
+
+            string MSVCSolutionContent = string.Format(File.ReadAllText(template.MSVCSolutionFilePath), _projectGUID, _projectName, _solutionGUID);
+            string MSVCvcxprojContent = string.Format(File.ReadAllText(template.MSVCvxprojFilePath), _projectGUID, _projectName, _primalIncludePath, _primalLinkPath);
+            File.WriteAllText(Path.GetFullPath(Path.Combine(path, @$"{ProjectName}.sln")), MSVCSolutionContent);
+            File.WriteAllText(Path.GetFullPath(Path.Combine(path, @$"GameCode\{ProjectName}.vcxproj")), MSVCvcxprojContent);
+            return true;
         }
 
         public NewProject()
@@ -212,12 +240,14 @@ namespace PrimalEditor.GameProject
                     ProjectTemplate? pt = Utilities.Serializier.FromFile<ProjectTemplate>(template);
                     if (pt != null)
                     {
-                        string projectPath = Path.GetDirectoryName(template) ?? @"./";
-                        pt.IconPath = Path.GetFullPath(Path.Combine(projectPath, "icon.png"));
+                        string templatePath = Path.GetDirectoryName(template) ?? @"./";
+                        pt.IconPath = Path.GetFullPath(Path.Combine(templatePath, "icon.png"));
                         pt.Icon = File.ReadAllBytes(pt.IconPath);
-                        pt.ScreenShotPath = Path.GetFullPath(Path.Combine(projectPath, "screenShot.png"));
+                        pt.ScreenShotPath = Path.GetFullPath(Path.Combine(templatePath, "screenShot.png"));
                         pt.ScreenShot = File.ReadAllBytes(pt.ScreenShotPath);
-                        pt.ProjectFilePath = Path.GetFullPath(Path.Combine(projectPath, pt.ProjectFile ?? "")); 
+                        pt.ProjectFilePath = Path.GetFullPath(Path.Combine(templatePath, pt.ProjectFile ?? ""));
+                        pt.MSVCSolutionFilePath = Path.GetFullPath(Path.Combine(templatePath, "MSVCSolution"));
+                        pt.MSVCvxprojFilePath = Path.GetFullPath(Path.Combine(templatePath, "MSVCGameProject"));
 
                         _projectTemplates.Add(pt);
                     }

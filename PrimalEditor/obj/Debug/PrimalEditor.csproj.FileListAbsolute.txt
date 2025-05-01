@@ -132,3 +132,12 @@ C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\ob
 C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor.pdb
 C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor.genruntimeconfig.cache
 C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\ref\PrimalEditor.dll
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\Interop.EnvDTE80.dll
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\Interop.EnvDTE.dll
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor.csproj.ResolveComReference.cache
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\Dialog\AskPrimalPathDlg.g.cs
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\Dialog\AskPrimalPathDlg.baml
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\Dialog\CreateScriptDialog.g.cs
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\Dialog\CreateScriptDialog.baml
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEditor.csproj.AssemblyReference.cache
+C:\Users\ZhenKou\OneDrive\project\crystalline02\PrimalGameEngine\PrimalEditor\obj\Debug\PrimalEd.36F56431.Up2Date

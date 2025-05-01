@@ -1,0 +1,46 @@
+﻿<Window x:Class="PrimalEditor.AskPrimalPathDlg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrimalEditor"
+        mc:Ignorable="d"
+        Style="{StaticResource PrimalDialogStyle}"
+        ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Title="Where is PrimalEngine?" Height="210" Width="600">
+    <Grid>
+        <Border Margin="20" Background="{StaticResource Editor.Window.GrayColorBrush4}">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="200" Opacity="0.7"/>
+            </Border.Effect>
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="17" Margin="5, 0" Grid.Column="0" Text="Path" Style="{StaticResource PrimalTextBlockStyle}"/>
+                    <TextBox Grid.Column="1" 
+                             FontSize="17"
+                             x:Name="PathTextBox" 
+                             Margin="0,3,10,3" 
+                             VerticalAlignment="Top"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="ErrorMessage" 
+                               Style="{StaticResource PrimalTextBlockStyle}" 
+                               Foreground="{StaticResource Editor.RedColorBrush}"
+                               HorizontalAlignment="Center"/>
+                    <StackPanel Margin="5, 10, 5, 5" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button FontSize="17" Height="35" Width="80" Content="Confirm" x:Name="ConfirmBtn" IsDefault="True" Margin="15, 10" Click="OnConfirmBtnClicked"/>
+                        <Button FontSize="17" Height="35" Width="80" Content="Cancel" x:Name="CancelBtn" IsCancel="True" Margin="15, 10"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

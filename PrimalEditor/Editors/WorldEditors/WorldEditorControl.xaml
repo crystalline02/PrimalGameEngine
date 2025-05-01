@@ -34,6 +34,7 @@
                           ResizeDirection="Rows"
                           Background="Transparent"/>
             <StackPanel Orientation="Vertical" Grid.Row="0">
+                <Button Content="Add new script" HorizontalAlignment="Left" Click="OnAddNewScript"/>
                 <ctrls:NumberBox Value="17.5" HorizontalAlignment="Center"/>
                 <ctrls:VectorBox X="-0.12" Z="0.25"/>
                 <ctrls:VectorBox X="9.86" HorizontalAlignment="Right"/>
