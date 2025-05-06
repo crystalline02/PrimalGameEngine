@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using EnvDTE80;
+using PrimalEditor.DLLWrapper;
 
 namespace PrimalEditor
 {
@@ -43,11 +45,15 @@ namespace PrimalEditor
             {
                 ErrorMessage.Text = "Path doesn't exists!";
             }
+            else if(!Directory.Exists(System.IO.Path.Combine(enteredPath, @"Engine\EngineAPI")))
+            {
+                ErrorMessage.Text = $"Folder \"Engine\\EngineAPI\" is not found, check if the path is correct.";
+            }
             else
             {
                 ErrorMessage.Text = string.Empty;
                 DialogResult = true;
-                Debug.Assert(Directory.Exists(System.IO.Path.Combine(enteredPath, @"Engine\EngineAPI")));
+
                 PrimalEnginePath = enteredPath;
             }
         }
