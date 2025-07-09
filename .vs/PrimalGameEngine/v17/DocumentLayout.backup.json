@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\crystalline02\\PrimalGameEngine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|e:\\crystalline02\\primalgameengine\\primaleditor\\dialog\\askprimalpathdlg.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\dialog\\askprimalpathdlg.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|e:\\crystalline02\\primalgameengine\\primaleditor\\dialog\\createscriptdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3A5E513B-7DE3-4A3F-A48F-A19014E74F28}|PrimalEditor\\PrimalEditor.csproj|solutionrelative:primaleditor\\dialog\\createscriptdialog.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,6 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AskPrimalPathDlg.xaml.cs",
+              "DocumentMoniker": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\Dialog\\AskPrimalPathDlg.xaml.cs",
+              "RelativeDocumentMoniker": "PrimalEditor\\Dialog\\AskPrimalPathDlg.xaml.cs",
+              "ToolTip": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\Dialog\\AskPrimalPathDlg.xaml.cs",
+              "RelativeToolTip": "PrimalEditor\\Dialog\\AskPrimalPathDlg.xaml.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAqwDEAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T08:04:56.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "CreateScriptDialog.xaml.cs",
               "DocumentMoniker": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\Dialog\\CreateScriptDialog.xaml.cs",
               "RelativeDocumentMoniker": "PrimalEditor\\Dialog\\CreateScriptDialog.xaml.cs",
@@ -35,7 +52,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "VisualStudio.cs",
               "DocumentMoniker": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\GameDev\\VisualStudio.cs",
               "RelativeDocumentMoniker": "PrimalEditor\\GameDev\\VisualStudio.cs",

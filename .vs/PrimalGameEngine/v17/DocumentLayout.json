@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "PrimalEditor\\Dialog\\AskPrimalPathDlg.xaml.cs",
               "ToolTip": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\Dialog\\AskPrimalPathDlg.xaml.cs",
               "RelativeToolTip": "PrimalEditor\\Dialog\\AskPrimalPathDlg.xaml.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwDEAAABuAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAuwCEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-06T08:04:56.495Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "PrimalEditor\\Dialog\\CreateScriptDialog.xaml.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAnwBUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T06:06:31.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-01T06:06:31.625Z"
             },
             {
               "$type": "Document",
