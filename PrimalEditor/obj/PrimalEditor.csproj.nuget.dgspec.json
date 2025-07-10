@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj": {}
+    "D:\\VSRepository\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj": {}
   },
   "projects": {
-    "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj": {
+    "D:\\VSRepository\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj",
+        "projectUniqueName": "D:\\VSRepository\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj",
         "projectName": "PrimalEditor",
-        "projectPath": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj",
+        "projectPath": "D:\\VSRepository\\crystalline02\\PrimalGameEngine\\PrimalEditor\\PrimalEditor.csproj",
         "packagesPath": "C:\\Users\\ZhenKou\\.nuget\\packages\\",
-        "outputPath": "E:\\crystalline02\\PrimalGameEngine\\PrimalEditor\\obj\\",
+        "outputPath": "D:\\VSRepository\\crystalline02\\PrimalGameEngine\\PrimalEditor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -96,7 +96,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
