@@ -48,6 +48,7 @@ struct transform_descriptor
 struct game_entity_descriptor
 {
 	transform_descriptor transform;
+	script_descritor script;
 
 	// Do not get entity info from member funciton.It's polluted!
 	//game_entity::entity_info to_entity_info() const
@@ -67,6 +68,7 @@ EDITOR_INTERFACE id::id_type CreateGameEntity(const game_entity_descriptor* desc
 {
 	assert(descriptor != nullptr);
 	transform::init_info transform_info = descriptor->transform.to_init_info();
+	script::init_info script_info = descriptor->
 	entity::entity_info entiy_info
 	{
 		&transform_info  // Very important:transform_info will be cleared after this function is called.Which makes entiy_info polluted.However, as entiy_info is not returned it doesnt matter.

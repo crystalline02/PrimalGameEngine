@@ -19,7 +19,7 @@ namespace primal::entity
 		util::deque<entity_id> free_ids;  // from old to new.'free_ids' aslo contains generation part and index part.
 	}  // Anonymous namespace.Restricted to this file only, so that we can use the same name in other files without worrying about name collision.
 
-	// 创建entity的过程包括了获得entity和其组件的索引（匿名空间中定义的变量）以及创建各个组件的数据内容（在各个组件的匿名空间中定义的比哪里）这两个部分
+	// 创建entity的过程包括了获得entity和其组件的索引（匿名空间中定义的变量）以及创建各个组件的数据内容（在各个组件的匿名空间中定义的变量）这两个部分
 	game_entity create(const entity_info& info)
 	{
 		assert(info.transform_info != nullptr);
