@@ -50,9 +50,9 @@ namespace primal::entity
 		game_entity new_entity(new_id);
 		id::id_type entity_index_part(id::index(new_id));
 
+		// Create transform component
 		assert(!transforms[entity_index_part].is_valid());  // We always create a transform component in the invalid place
 		transforms[entity_index_part] = transform::create(*info.transform_info, new_entity);
-		scripts[entity_index_part] = info.script_info ? script::create(*info.script_info, new_entity) : script::component();
 
 		// entity id index index into the 'transform' array
 		return new_entity;

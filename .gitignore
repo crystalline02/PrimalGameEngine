@@ -6,6 +6,7 @@
 PrimalEditor/obj/
 EngineDLL/x64/
 Engine/x64/
+EngineTest/x64/
 
 # User-specific files
 *.rsuser
@@ -365,3 +366,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/EngineTest/x64

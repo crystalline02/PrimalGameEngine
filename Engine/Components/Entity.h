@@ -6,10 +6,9 @@
 
 namespace primal::entity
 {
-	struct  entity_info
+	struct entity_info
 	{
 		transform::init_info* transform_info = nullptr;
-		script::init_info* script_info = nullptr;
 #pragma region  MemeoryArragement
 		//entity_info() = default;
 

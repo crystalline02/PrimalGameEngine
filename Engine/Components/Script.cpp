@@ -74,8 +74,9 @@ namespace primal::script
 	bool component::remove()
 	{
 		script_id id = script_id(_id);
-		assert(id::is_valid(id));
-		if (!exist(id))
+		// A game entity may not have a script component.So there's no need to assest it is valid
+		// assert(is_valid());
+		if (!is_valid() || !exist(id))
 			return false;
 		id::id_type index_to_id_mapping = id::index(id);
 		id::id_type index_to_entity_scripts = id_mapping[index_to_id_mapping];
