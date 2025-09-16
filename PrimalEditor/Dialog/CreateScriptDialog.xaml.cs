@@ -1,12 +1,6 @@
-﻿using EnvDTE;
-using PrimalEditor.GameDev;
+﻿using PrimalEditor.GameDev;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;

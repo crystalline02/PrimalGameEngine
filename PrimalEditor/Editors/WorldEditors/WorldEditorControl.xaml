@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:PrimalEditor.Editors"
              xmlns:util="clr-namespace:PrimalEditor.Utilities"
              xmlns:ctrls="clr-namespace:PrimalEditor.Utilities.Controls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" Focusable="True"
              d:DesignHeight="1080" d:DesignWidth="1920">
     <!--DataContext: Project-->
@@ -34,7 +35,14 @@
                           ResizeDirection="Rows"
                           Background="Transparent"/>
             <StackPanel Orientation="Vertical" Grid.Row="0">
-                <Button Content="Add new script" HorizontalAlignment="Left" Click="OnAddNewScript"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,10">
+                    <Button Content="Add new script" HorizontalAlignment="Left" Click="OnAddNewScript"/>
+                    <Button Content="Build" Click="OnBuildProject" Margin="8, 0"/>
+                    <ComboBox SelectedIndex="{Binding BuildConfigurationIndex}">
+                        <ComboBoxItem Content="Debug"/>
+                        <ComboBoxItem Content="Release"/>
+                    </ComboBox>
+                </StackPanel>
                 <ctrls:NumberBox Value="17.5" HorizontalAlignment="Center"/>
                 <ctrls:VectorBox X="-0.12" Z="0.25"/>
                 <ctrls:VectorBox X="9.86" HorizontalAlignment="Right"/>

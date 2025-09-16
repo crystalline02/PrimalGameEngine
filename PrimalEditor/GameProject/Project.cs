@@ -1,8 +1,6 @@
 ﻿using PrimalEditor.GameDev;
 using PrimalEditor.Utilities;
-using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,6 +9,11 @@ using System.Windows.Input;
 
 namespace PrimalEditor.GameProject
 {
+    public enum BuildConfiguration
+    {
+        Debug, DebugEditor, Release, ReleaseEditor
+    }
+
     // Name 表示xml序列化的根名称
     [DataContract(Name = "Game")]
     class Project : ViewModelBase
@@ -26,6 +29,25 @@ namespace PrimalEditor.GameProject
         public string Path { get; private set; }  
         static public string Extention => ".primal";
         public string FilePath => System.IO.Path.GetFullPath(System.IO.Path.Combine($"{Path}", $"{Name}{Extention}"));  // 项目文件的完整路径
+
+        private int m_buildConfigurationIndex = 0; 
+        [DataMember]
+        public int BuildConfigurationIndex {
+            get => m_buildConfigurationIndex;
+            set
+            {
+                if(m_buildConfigurationIndex != value)
+                {
+                    m_buildConfigurationIndex = value;
+                    OnPropertyChanged(nameof(BuildConfigurationIndex));
+                }
+            }
+        }
+
+        private readonly string[] BuildConfigurationNames = { "Debug", "DebugEditor", "Release", "ReleaseEditor" };
+
+        public BuildConfiguration EditorBuildConfiguration => BuildConfigurationIndex == 0 ? BuildConfiguration.DebugEditor : BuildConfiguration.ReleaseEditor;
+        public BuildConfiguration StandAloneBuildConfiguration => BuildConfigurationIndex == 0 ? BuildConfiguration.Debug : BuildConfiguration.Release;
 
         public string SolutionPath => System.IO.Path.GetFullPath(System.IO.Path.Combine($"{Path}", $"{Name}.sln"));  // Solution文件的完整路径
 

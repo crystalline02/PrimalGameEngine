@@ -44,5 +44,10 @@ namespace PrimalEditor.Editors
                 dlg.Close();
             }
         }
+
+        private void OnBuildProject(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
